@@ -1,0 +1,99 @@
+package es.udc.paproject.backend.model.entities;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+public class Inscription {
+
+    private Long id;
+    private User user;
+    private SportTest sportTest;
+    private String cardNumber;
+    private LocalDateTime reservationDate;
+    private float price;
+    private int dorsal;
+    private int score;
+
+    public Inscription() {}
+
+    public Inscription(User user, SportTest sportTest, String cardNumber,
+                       LocalDateTime reservationDate, float price, int dorsal) {
+        this.user = user;
+        this.sportTest = sportTest;
+        this.cardNumber = cardNumber;
+        this.reservationDate = reservationDate;
+        this.price = price;
+        this.dorsal = dorsal;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @ManyToOne(optional=false, fetch=FetchType.LAZY)
+    @JoinColumn(name= "userId")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne(optional=false, fetch=FetchType.LAZY)
+    @JoinColumn(name= "sportTestId")
+    public SportTest getSportTest() {
+        return sportTest;
+    }
+
+    public void setSportTest(SportTest sportTest) {
+        this.sportTest = sportTest;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public LocalDateTime getReservationDate() {
+        return reservationDate;
+    }
+
+    public void setReservationDate(LocalDateTime reservationDate) {
+        this.reservationDate = reservationDate;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getDorsal() {
+        return dorsal;
+    }
+
+    public void setDorsal(int dorsal) {
+        this.dorsal = dorsal;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+}
