@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -21,6 +22,9 @@ public class SportTestServiceImpl implements SportTestService{
 
     @Autowired
     private SportTestTypeDao sportTestTypeDao;
+
+    @Autowired
+    private SportTestDao sportTestDao;
 
 
     @Override
@@ -45,7 +49,13 @@ public class SportTestServiceImpl implements SportTestService{
 
     @Override
     public SportTest findSportTestById(Long id) throws InstanceNotFoundException {
-        return null;
+        Optional<SportTest> test = sportTestDao.findById(id);
+
+        if (!test.isPresent()) {
+            throw new InstanceNotFoundException("project.entities.sportTest", id);
+        }
+
+        return test.get();
     }
 
     @Override
