@@ -15,7 +15,7 @@ public interface InscriptionService {
         throws InstanceNotFoundException, PermissionException, AlreadyInscribedException,
             NoMoreInscriptionsAllowedException, InscriptionDateExpiredException;
 
-    int collectDorsal(Long userId, Long sportTestId, Long inscriptionId, String cardNumber)
+    int collectDorsal(Long sportTestId, Long inscriptionId, String cardNumber)
         throws InstanceNotFoundException, PermissionException, NotAllowedYetException,
             InscriptionNotAssociatedException, AlreadyCollectedException, IncorrectCardNumberException;
 

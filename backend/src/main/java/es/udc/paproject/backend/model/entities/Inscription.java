@@ -13,6 +13,7 @@ public class Inscription {
     private LocalDateTime reservationDate;
     private float price;
     private int dorsal;
+    private boolean dorsalCollected;
     private int score;
 
     public Inscription() {}
@@ -25,6 +26,7 @@ public class Inscription {
         this.reservationDate = reservationDate;
         this.price = price;
         this.dorsal = dorsal;
+        this.dorsalCollected = false;
     }
 
     @Id
@@ -88,6 +90,10 @@ public class Inscription {
     public void setDorsal(int dorsal) {
         this.dorsal = dorsal;
     }
+
+    public boolean isDorsalCollected() { return dorsalCollected; }
+
+    public void setDorsalCollected(boolean dorsalCollected) { this.dorsalCollected = dorsalCollected; }
 
     public int getScore() {
         return score;
