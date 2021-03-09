@@ -6,9 +6,9 @@ import es.udc.paproject.backend.model.exceptions.*;
 import java.util.List;
 
 public interface InscriptionService {
-    List<Inscription> findMyInscriptions(Long userId) throws InstanceNotFoundException, PermissionException;
+    Block<Inscription> findMyInscriptions(Long userId);
 
-    void scoreTest(Long inscriptionId) throws InstanceNotFoundException, DateExpiredException,
+    void scoreTest(Long inscriptionId, Long userId, int score) throws InstanceNotFoundException, DateExpiredException,
             InscriptionAlreadyScoredException, SportTestNotStartedYetException;
 
     Inscription inscribe(Long sportTestId, Long userId, String cardNumber)
