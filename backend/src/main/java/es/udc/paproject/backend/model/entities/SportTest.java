@@ -20,10 +20,9 @@ public class SportTest {
 
     public SportTest() {}
 
-    public SportTest(Long id, String name, String description, LocalDateTime date, float price,
+    public SportTest(String name, String description, LocalDateTime date, float price,
                      int maxParticipants, int numParticipants, SportTestType type, String location,
-                     Province province, int rating) {
-        this.id = id;
+                     Province province) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -33,7 +32,6 @@ public class SportTest {
         this.type = type;
         this.location = location;
         this.province = province;
-        this.rating = rating;
     }
 
     @Id

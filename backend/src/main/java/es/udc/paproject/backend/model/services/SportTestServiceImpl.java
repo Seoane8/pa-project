@@ -4,6 +4,8 @@ package es.udc.paproject.backend.model.services;
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,7 +61,10 @@ public class SportTestServiceImpl implements SportTestService{
     }
 
     @Override
-    public Block<SportTest> findSportTests(Province province, SportTestType type, LocalDate startDate, LocalDate finishDate, int page, int size) {
-        return null;
+    public Block<SportTest> findSportTests(Long provinceId, Long typeId, LocalDate startDate, LocalDate finishDate, int page, int size) {
+
+        Slice<SportTest> slice = sportTestDao.findRaces(provinceId, typeId, startDate, finishDate, PageRequest.of(page, size));
+
+        return new Block<>(slice.getContent(), slice.hasNext());
     }
 }

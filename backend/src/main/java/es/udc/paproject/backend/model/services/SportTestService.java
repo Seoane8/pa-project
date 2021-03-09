@@ -16,6 +16,6 @@ public interface SportTestService {
 
     SportTest findSportTestById(Long id) throws InstanceNotFoundException;
 
-    Block<SportTest> findSportTests(Province province, SportTestType type, LocalDate startDate, LocalDate finishDate, int page, int size);
+    Block<SportTest> findSportTests(Long provinceId, Long typeId, LocalDate startDate, LocalDate finishDate, int page, int size);
 
 }
