@@ -20,7 +20,7 @@ public class SportTestServiceImpl implements SportTestService{
     private ProvinceDao provinceDao;
 
     @Autowired
-    private SportTestDao sportTestDao;
+    private SportTestTypeDao sportTestTypeDao;
 
 
     @Override
@@ -35,7 +35,12 @@ public class SportTestServiceImpl implements SportTestService{
 
     @Override
     public List<SportTestType> findAllSportTestTypes() {
-        return null;
+        Iterable<SportTestType> sportTestType = sportTestTypeDao.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<SportTestType> sportTestTypeAsList = new ArrayList<>();
+
+        sportTestType.forEach(s -> sportTestTypeAsList.add(s));
+
+        return sportTestTypeAsList;
     }
 
     @Override
