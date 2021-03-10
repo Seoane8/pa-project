@@ -2,6 +2,7 @@ package es.udc.paproject.backend.test.model.services;
 
 
 import es.udc.paproject.backend.model.entities.*;
+import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.SportTestService;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -164,6 +167,59 @@ public class SportTestServiceTest {
         expectedBlock = new Block<>(Arrays.asList(), false);
 
         assertEquals(expectedBlock, sportTestService.findSportTests(null, null, null, null, 2, 2));
+    }
+
+    @Test
+    public void testFindAllProvinces() {
+        List<Province> expectedList = new ArrayList<>();
+        assertEquals(expectedList, sportTestService.findAllProvinces());
+
+        Province province1 = addProvince("A Coruña");
+        Province province2 = addProvince("Lugo");
+        Province province3 = addProvince("Pontevedra");
+
+        expectedList.add(province1);
+        expectedList.add(province2);
+        expectedList.add(province3);
+
+        assertEquals(expectedList, sportTestService.findAllProvinces());
+    }
+
+    @Test
+    public void testFindAllSportTestTypes() {
+        List<SportTestType> expectedList = new ArrayList<>();
+        assertEquals(expectedList, sportTestService.findAllSportTestTypes());
+
+        SportTestType t1 = addSportTestType("Race");
+        SportTestType t2 = addSportTestType("Match");
+        SportTestType t3 = addSportTestType("Another");
+
+        expectedList.add(t3);
+        expectedList.add(t2);
+        expectedList.add(t1);
+
+        assertEquals(expectedList, sportTestService.findAllSportTestTypes());
+    }
+
+    @Test
+    public void testFindSportTestById() throws InstanceNotFoundException {
+
+        Province province1 = addProvince("A Coruña");
+
+        SportTestType sportTestType1 = addSportTestType("Race");
+
+        SportTest sportTest1 = addSportTest("Race 1", LocalDateTime.now().plusMonths(2), sportTestType1, province1);
+        SportTest sportTest2 = addSportTest("Race 2", LocalDateTime.now().plusMonths(2), sportTestType1, province1);
+
+        assertEquals(sportTest1, sportTestService.findSportTestById(sportTest1.getId()));
+        assertEquals(sportTest2, sportTestService.findSportTestById(sportTest2.getId()));
+    }
+
+    @Test
+    public void testFindSportTestByIdNotExisting() {
+
+        assertThrows(InstanceNotFoundException.class, () ->
+                sportTestService.findSportTestById(123L));
     }
 
 }
