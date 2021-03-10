@@ -104,7 +104,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testInscribeILate() {
+    public void testInscribeLate() {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(20));
 
@@ -113,10 +113,10 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testInscibe() throws PermissionException, AlreadyInscribedException,
+    public void testInscribe() throws PermissionException, AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
-        SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(20));
+        SportTest sportTest = addSportTest("Solidary Race 2021");
 
         Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
         Optional<Inscription> foundInscription = inscriptionDao.findById(inscription.getId());
