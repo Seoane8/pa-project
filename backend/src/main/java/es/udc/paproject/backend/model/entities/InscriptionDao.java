@@ -8,4 +8,6 @@ public interface InscriptionDao extends PagingAndSortingRepository<Inscription, 
 
     Slice<Inscription> findByUserIdOrderByReservationDateDesc(Long userId, Pageable pageable);
 
+    boolean existsByUserIdAndSportTestId(Long userId, Long SportTestId);
+
 }

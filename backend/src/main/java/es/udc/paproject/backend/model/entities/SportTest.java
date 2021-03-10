@@ -17,6 +17,7 @@ public class SportTest {
     private String location;
     private Province province;
     private int rating;
+    private int version;
 
     public SportTest() {}
 
@@ -93,7 +94,7 @@ public class SportTest {
     }
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "SportTestTypeId")
+    @JoinColumn(name = "sportTestTypeId")
     public SportTestType getType() {
         return type;
     }
@@ -111,7 +112,7 @@ public class SportTest {
     }
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "ProvinceId")
+    @JoinColumn(name = "provinceId")
     public Province getProvince() {
         return province;
     }
@@ -126,5 +127,14 @@ public class SportTest {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    @Version
+    public int getVersion() { return version; }
+
+    public void setVersion(int version) { this.version = version; }
+
+    public int addParticipant() {
+        return this.numParticipants == this.maxParticipants ? -1 : ++this.numParticipants;
     }
 }
