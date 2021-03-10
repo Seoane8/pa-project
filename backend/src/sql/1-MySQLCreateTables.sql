@@ -1,8 +1,8 @@
-DROP TABLE User;
+DROP TABLE Inscription;
+DROP TABLE SportTest;
 DROP TABLE Province;
 DROP TABLE SportTestType;
-DROP TABLE SportTest;
-DROP TABLE Inscription;
+DROP TABLE User;
 
 CREATE TABLE User (
     id BIGINT NOT NULL AUTO_INCREMENT,
