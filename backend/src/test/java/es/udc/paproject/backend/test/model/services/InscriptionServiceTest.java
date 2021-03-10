@@ -34,6 +34,12 @@ public class InscriptionServiceTest {
     private UserService userService;
 
     @Autowired
+    private ProvinceDao provinceDao;
+
+    @Autowired
+    private SportTestTypeDao sportTestTypeDao;
+
+    @Autowired
     private SportTestDao sportTestDao;
 
     @Autowired
@@ -57,11 +63,17 @@ public class InscriptionServiceTest {
 
     }
 
+    private Province addProvince () {
+        return provinceDao.save(new Province("A Coruña"));
+    }
+
+    private SportTestType addSportTestType () {
+        return sportTestTypeDao.save(new SportTestType("race"));
+    }
+
     private SportTest addSportTest(String name, LocalDateTime date, int maxParticipants) {
-        SportTestType sportTestType = new SportTestType("race");
-        Province province = new Province("A Coruña");
         SportTest sportTest = new SportTest(name, DESCRIPTION, date, PRICE, maxParticipants,
-                0, sportTestType, LOCATION, province);
+                0, addSportTestType(), LOCATION, addProvince());
         return sportTestDao.save(sportTest);
     }
     private SportTest addSportTest(String name, LocalDateTime date) {
