@@ -15,6 +15,7 @@ public class Inscription {
     private int dorsal;
     private boolean dorsalCollected;
     private int score;
+    private int version;
 
     public Inscription() {}
 
@@ -102,4 +103,9 @@ public class Inscription {
     public void setScore(int score) {
         this.score = score;
     }
+
+    @Version
+    public int getVersion() { return version; }
+
+    public void setVersion(int version) { this.version = version; }
 }

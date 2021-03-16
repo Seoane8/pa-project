@@ -60,6 +60,7 @@ CREATE TABLE Inscription (
     dorsal INT NOT NULL,
     dorsalCollected BOOLEAN NOT NULL,
     score INT,
+    version INT NOT NULL,
     CONSTRAINT InscriptionPK PRIMARY KEY (id),
     CONSTRAINT InscriptionUserIdFK FOREIGN KEY (userId)
         REFERENCES User (id),

@@ -4,20 +4,20 @@ import java.time.LocalDateTime;
 
 public class NotAllowedYetException extends Exception {
 
-    Float inscriptionId;
+    Long inscriptionId;
     LocalDateTime date;
 
-    public NotAllowedYetException(Float inscriptionId, LocalDateTime date) {
+    public NotAllowedYetException(Long inscriptionId, LocalDateTime date) {
         super("Can only be collected 12 hours before the sport test (date = " + date.toString() + ")");
         this.inscriptionId = inscriptionId;
         this.date = date;
     }
 
-    public Float getInscriptionId() {
+    public Long getInscriptionId() {
         return inscriptionId;
     }
 
-    public void setInscriptionId(Float inscriptionId) {
+    public void setInscriptionId(Long inscriptionId) {
         this.inscriptionId = inscriptionId;
     }
 

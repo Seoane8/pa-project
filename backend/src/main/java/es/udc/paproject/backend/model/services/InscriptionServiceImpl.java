@@ -49,7 +49,7 @@ public class InscriptionServiceImpl  implements InscriptionService{
         }
 
         if (user.isEmpty()) {
-            throw new InstanceNotFoundException("entities.user", sportTestId);
+            throw new InstanceNotFoundException("entities.user", userId);
         }
 
         if (inscriptionDao.existsByUserIdAndSportTestId(userId, sportTestId)){
@@ -76,6 +76,35 @@ public class InscriptionServiceImpl  implements InscriptionService{
     public int collectDorsal(Long sportTestId, Long inscriptionId, String cardNumber)
             throws InstanceNotFoundException, PermissionException, NotAllowedYetException,
             InscriptionNotAssociatedException, AlreadyCollectedException, IncorrectCardNumberException {
-        return 0;
+        Optional<SportTest> sportTest = sportTestDao.findById(sportTestId);
+        Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
+
+        if (sportTest.isEmpty()) {
+            throw new InstanceNotFoundException("entities.sportTest", sportTestId);
+        }
+
+        if (inscription.isEmpty()) {
+            throw new InstanceNotFoundException("entities.inscription", inscriptionId);
+        }
+
+        if (!sportTestId.equals(inscription.get().getSportTest().getId())) {
+            throw new InscriptionNotAssociatedException(inscriptionId, sportTestId);
+        }
+
+        if (sportTest.get().getDate().minusHours(12).isAfter(LocalDateTime.now())) {
+            throw new NotAllowedYetException(inscriptionId, sportTest.get().getDate());
+        }
+
+        if (inscription.get().isDorsalCollected()) {
+            throw new AlreadyCollectedException(sportTestId, inscription.get().getUser().getUserName());
+        }
+
+        if (!cardNumber.equals(inscription.get().getCardNumber())) {
+            throw new IncorrectCardNumberException(inscriptionId, inscription.get().getUser().getUserName());
+        }
+
+        inscription.get().setDorsalCollected(true);
+        return inscription.get().getDorsal();
+
     }
 }
