@@ -36,7 +36,6 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
         Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
         Optional<User> user = userDao.findById(userId);
-        Optional<SportTest> sportTest = Optional.ofNullable(inscription.get().getSportTest());
 
         if (inscription.isEmpty()) {
             throw new InstanceNotFoundException("entities.inscription", inscriptionId);
@@ -45,6 +44,8 @@ public class InscriptionServiceImpl  implements InscriptionService{
         if (user.isEmpty()) {
             throw new InstanceNotFoundException("entities.user", userId);
         }
+
+        Optional<SportTest> sportTest = Optional.ofNullable(inscription.get().getSportTest());
 
         if (LocalDateTime.now().isAfter(sportTest.get().getDate().plusDays(15))) {
             throw new DateExpiredException(sportTest.get().getId());
