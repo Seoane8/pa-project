@@ -28,6 +28,7 @@ public class Inscription {
         this.price = price;
         this.dorsal = dorsal;
         this.dorsalCollected = false;
+        this.score = -1;
     }
 
     @Id

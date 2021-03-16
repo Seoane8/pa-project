@@ -34,6 +34,32 @@ public class InscriptionServiceImpl  implements InscriptionService{
             throws InstanceNotFoundException, DateExpiredException,
             InscriptionAlreadyScoredException, SportTestNotStartedYetException {
 
+        Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
+        Optional<User> user = userDao.findById(userId);
+        Optional<SportTest> sportTest = Optional.ofNullable(inscription.get().getSportTest());
+
+        if (inscription.isEmpty()) {
+            throw new InstanceNotFoundException("entities.inscription", inscriptionId);
+        }
+
+        if (user.isEmpty()) {
+            throw new InstanceNotFoundException("entities.user", userId);
+        }
+
+        if (LocalDateTime.now().isAfter(sportTest.get().getDate().plusDays(15))) {
+            throw new DateExpiredException(sportTest.get().getId());
+        }
+
+        if (inscription.get().getScore() != -1) {
+            throw new InscriptionAlreadyScoredException(inscriptionId);
+        }
+
+        if (LocalDateTime.now().isBefore(sportTest.get().getDate())) {
+            throw new SportTestNotStartedYetException(sportTest.get().getId());
+        }
+
+        inscription.get().setScore(score);
+
     }
 
     @Override
