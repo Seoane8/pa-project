@@ -87,6 +87,69 @@ public class InscriptionServiceTest {
     }
 
     @Test
+    public void testScoreOfNonExistingInscription() {
+        User user = singUpUser("user");
+
+        assertThrows(InstanceNotFoundException.class, () ->
+                inscriptionService.scoreTest(NON_EXISTENT_ID, user.getId(), 3));
+    }
+
+    @Test
+    public void testScoreLaterThan15Days() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+
+        sportTest.setDate(LocalDateTime.now().minusDays(17));
+
+        assertThrows(DateExpiredException.class, () ->
+                inscriptionService.scoreTest(inscription.getId(), user.getId(), 3));
+    }
+
+    @Test
+    public void testInscriptionAlreadyScored() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
+            DateExpiredException, SportTestNotStartedYetException, InscriptionAlreadyScoredException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+
+        sportTest.setDate(LocalDateTime.now().minusDays(10));
+        inscriptionService.scoreTest(inscription.getId(), user.getId(), 3);
+
+        assertThrows(InscriptionAlreadyScoredException.class, () ->
+                inscriptionService.scoreTest(inscription.getId(), user.getId(), 4));
+
+    }
+
+    @Test
+    public void testSportTestNotStartedYet() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
+            DateExpiredException, SportTestNotStartedYetException, InscriptionAlreadyScoredException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+
+        assertThrows(SportTestNotStartedYetException.class, () ->
+                inscriptionService.scoreTest(inscription.getId(), user.getId(), 4));
+
+    }
+
+    @Test
+    public void testScoreTest() throws PermissionException, AlreadyInscribedException, InscriptionDateExpiredException,
+            NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        Optional<Inscription> foundInscription = inscriptionDao.findById(inscription.getId());
+
+        sportTest.setDate(LocalDateTime.now().minusDays(10));
+
+        assertEquals(inscription.getScore(), foundInscription.get().getScore());
+    }
+
+    @Test
     public void testInscribeInNonExistingSportTest() {
         User user = singUpUser("user");
 
