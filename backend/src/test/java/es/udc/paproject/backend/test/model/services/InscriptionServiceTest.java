@@ -144,4 +144,95 @@ public class InscriptionServiceTest {
 
     }
 
+    @Test
+    public void testCollectDorsalOfNonExistingSportTest() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Urban Race 2021");
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        sportTest.setDate(LocalDateTime.now().plusHours(10));
+
+        assertThrows(InstanceNotFoundException.class, () ->
+                inscriptionService.collectDorsal(NON_EXISTENT_ID, inscription.getId(), CARD_NUMBER));
+    }
+
+    @Test
+    public void testCollectDorsalOfNonExistingInscription() {
+        SportTest sportTest = addSportTest("Urban Race 2021");
+
+        assertThrows(InstanceNotFoundException.class, () ->
+                inscriptionService.collectDorsal(sportTest.getId(), NON_EXISTENT_ID, CARD_NUMBER));
+    }
+
+    @Test
+    public void testCollectDorsalOfNotAssociatedInscription() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user = singUpUser("user");
+        SportTest sportTestValid = addSportTest("Urban Race 2021");
+        SportTest sportTestInvalid = addSportTest("Solidary Race 2021");
+        Inscription inscription = inscriptionService.inscribe(sportTestValid.getId(), user.getId(), CARD_NUMBER);
+        sportTestValid.setDate(LocalDateTime.now().plusHours(10));
+
+        assertThrows(InscriptionNotAssociatedException.class, () ->
+                inscriptionService.collectDorsal(sportTestInvalid.getId(), inscription.getId(), CARD_NUMBER));
+    }
+
+    @Test
+    public void testCollectDorsalSoon() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Urban Race 2021");
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        sportTest.setDate(LocalDateTime.now().plusHours(14));
+
+        assertThrows(NotAllowedYetException.class, () ->
+                inscriptionService.collectDorsal(sportTest.getId(), inscription.getId(), CARD_NUMBER));
+    }
+
+    @Test
+    public void testCollectAlreadyCollectedInscription() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
+            NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
+            InscriptionNotAssociatedException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Urban Race 2021");
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        sportTest.setDate(LocalDateTime.now().plusHours(10));
+
+        inscriptionService.collectDorsal(sportTest.getId(), inscription.getId(), CARD_NUMBER);
+
+        assertThrows(AlreadyCollectedException.class, () ->
+                inscriptionService.collectDorsal(sportTest.getId(), inscription.getId(), CARD_NUMBER));
+    }
+
+    @Test
+    public void testCollectDorsalWithIncorrectCard () throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Urban Race 2021");
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        sportTest.setDate(LocalDateTime.now().plusHours(10));
+
+        assertThrows(IncorrectCardNumberException.class, () ->
+                inscriptionService.collectDorsal(sportTest.getId(), inscription.getId(), "1234567890000000"));
+    }
+
+    @Test
+    public void testCollectDorsal () throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
+            NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
+            InscriptionNotAssociatedException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Urban Race 2021");
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        sportTest.setDate(LocalDateTime.now().plusHours(10));
+
+        int dorsal = inscriptionService.collectDorsal(sportTest.getId(), inscription.getId(), CARD_NUMBER);
+
+        Optional<Inscription> foundInscription = inscriptionDao.findById(inscription.getId());
+
+        assertTrue(foundInscription.get().isDorsalCollected());
+        assertEquals(foundInscription.get().getDorsal(), dorsal);
+    }
+
 }
