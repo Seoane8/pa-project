@@ -2,6 +2,7 @@ package es.udc.paproject.backend.test.model.services;
 
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.*;
+import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.InscriptionService;
 import es.udc.paproject.backend.model.services.UserService;
 
@@ -12,6 +13,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -296,6 +299,39 @@ public class InscriptionServiceTest {
 
         assertTrue(foundInscription.get().isDorsalCollected());
         assertEquals(foundInscription.get().getDorsal(), dorsal);
+    }
+
+    @Test
+    public void testFindNoInscriptions() {
+
+        User user = singUpUser("user");
+        Block<Inscription> expectedIns = new Block<>(new ArrayList<>(), false);
+
+        assertEquals(expectedIns, inscriptionService.findMyInscriptions(user.getId(), 0, 1));
+    }
+
+    @Test
+    public void testFindInscriptions() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Urban Race 2021");
+        SportTest sportTest2 = addSportTest("Triatlón Teresa Herrera 2021");
+        SportTest sportTest3 = addSportTest("Mundialito de futsal 2021");
+        sportTest.setDate(LocalDateTime.now().plusMonths(2));
+        sportTest2.setDate(LocalDateTime.now().plusMonths(5));
+        sportTest3.setDate(LocalDateTime.now().plusMonths(8));
+
+        Inscription inscription1 = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        Inscription inscription2 = inscriptionService.inscribe(sportTest2.getId(), user.getId(), CARD_NUMBER);
+        Inscription inscription3 = inscriptionService.inscribe(sportTest3.getId(), user.getId(), CARD_NUMBER);
+
+        Block<Inscription> expectedBlock = new Block<>(Arrays.asList(inscription1, inscription2), true);
+        assertEquals(expectedBlock, inscriptionService.findMyInscriptions(user.getId(), 0, 2));
+
+        expectedBlock = new Block<>(Arrays.asList(inscription3), false);
+        assertEquals(expectedBlock, inscriptionService.findMyInscriptions(user.getId(), 1, 2));
+
     }
 
 }

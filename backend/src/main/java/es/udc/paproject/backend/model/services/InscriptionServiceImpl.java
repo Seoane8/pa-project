@@ -3,6 +3,8 @@ package es.udc.paproject.backend.model.services;
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,7 +28,9 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
     @Override
     public Block<Inscription> findMyInscriptions(Long userId, int page, int size) {
-        return null;
+        Slice<Inscription> slice = inscriptionDao.findByUserIdOrderByReservationDateDesc(userId, PageRequest.of(page, size));
+
+        return new Block<>(slice.getContent(), slice.hasNext());
     }
 
     @Override
