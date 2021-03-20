@@ -17,6 +17,7 @@ public class SportTest {
     private String location;
     private Province province;
     private int rating;
+    private int numRatings;
     private int version;
 
     public SportTest() {}
@@ -129,6 +130,14 @@ public class SportTest {
         this.rating = rating;
     }
 
+    public int getNumRatings() {
+        return numRatings;
+    }
+
+    public void setNumRatings(int numRatings) {
+        this.numRatings = numRatings;
+    }
+
     @Version
     public int getVersion() { return version; }
 
@@ -136,5 +145,10 @@ public class SportTest {
 
     public int addParticipant() {
         return this.numParticipants == this.maxParticipants ? -1 : ++this.numParticipants;
+    }
+
+    public void actualizeScore(int score) {
+        this.rating = (rating * numRatings + score) / (numRatings + 1);
+        this.numRatings = numRatings + 1;
     }
 }

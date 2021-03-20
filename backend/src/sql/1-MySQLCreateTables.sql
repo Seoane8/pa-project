@@ -42,6 +42,7 @@ CREATE TABLE SportTest (
     location VARCHAR(60) NOT NULL,
     provinceId BIGINT NOT NULL,
     rating INT,
+    numRatings INT,
     version INT NOT NULL,
     CONSTRAINT SportTestPK PRIMARY KEY (id),
     CONSTRAINT SportTestSportTestTypeIdFK FOREIGN KEY (sportTestTypeId)

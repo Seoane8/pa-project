@@ -98,6 +98,20 @@ public class InscriptionServiceTest {
     }
 
     @Test
+    public void testInscriptionFromWrongUser() throws PermissionException, AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user1 = singUpUser("user1");
+        User user2 = singUpUser("user2");
+        SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user2.getId(), CARD_NUMBER);
+
+        sportTest.setDate(LocalDateTime.now().minusDays(17));
+
+        assertThrows(InstanceNotFoundException.class, () ->
+                inscriptionService.scoreTest(inscription.getId(), user1.getId(), 3));
+    }
+
+    @Test
     public void testScoreLaterThan15Days() throws PermissionException, AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
@@ -141,15 +155,19 @@ public class InscriptionServiceTest {
 
     @Test
     public void testScoreTest() throws PermissionException, AlreadyInscribedException, InscriptionDateExpiredException,
-            NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+            NoMoreInscriptionsAllowedException, InstanceNotFoundException, DateExpiredException,
+            SportTestNotStartedYetException, InscriptionAlreadyScoredException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
         Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
         Optional<Inscription> foundInscription = inscriptionDao.findById(inscription.getId());
 
         sportTest.setDate(LocalDateTime.now().minusDays(10));
+        inscriptionService.scoreTest(inscription.getId(), user.getId(), 4);
 
         assertEquals(inscription.getScore(), foundInscription.get().getScore());
+        assertEquals(4, sportTest.getRating());
+        assertEquals(1, sportTest.getNumRatings());
     }
 
     @Test

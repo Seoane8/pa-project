@@ -39,13 +39,14 @@ public class InscriptionServiceImpl  implements InscriptionService{
             InscriptionAlreadyScoredException, SportTestNotStartedYetException {
 
         Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
-        Optional<User> user = userDao.findById(userId);
 
         if (inscription.isEmpty()) {
             throw new InstanceNotFoundException("entities.inscription", inscriptionId);
         }
 
-        if (user.isEmpty()) {
+        User user = inscription.get().getUser();
+
+        if (userId != user.getId()) {
             throw new InstanceNotFoundException("entities.user", userId);
         }
 
@@ -64,6 +65,7 @@ public class InscriptionServiceImpl  implements InscriptionService{
         }
 
         inscription.get().setScore(score);
+        sportTest.get().actualizeScore(score);
 
     }
 
