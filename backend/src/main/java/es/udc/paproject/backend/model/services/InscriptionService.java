@@ -12,11 +12,11 @@ public interface InscriptionService {
             InscriptionAlreadyScoredException, SportTestNotStartedYetException;
 
     Inscription inscribe(Long sportTestId, Long userId, String cardNumber)
-        throws InstanceNotFoundException, PermissionException, AlreadyInscribedException,
-            NoMoreInscriptionsAllowedException, InscriptionDateExpiredException;
+        throws InstanceNotFoundException, AlreadyInscribedException, NoMoreInscriptionsAllowedException,
+            InscriptionDateExpiredException;
 
     int collectDorsal(Long sportTestId, Long inscriptionId, String cardNumber)
-        throws InstanceNotFoundException, PermissionException, NotAllowedYetException,
-            InscriptionNotAssociatedException, AlreadyCollectedException, IncorrectCardNumberException;
+        throws InstanceNotFoundException, NotAllowedYetException, InscriptionNotAssociatedException,
+            AlreadyCollectedException, IncorrectCardNumberException;
 
 }

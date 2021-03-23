@@ -98,7 +98,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testInscriptionFromWrongUser() throws PermissionException, AlreadyInscribedException,
+    public void testInscriptionFromWrongUser() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user1 = singUpUser("user1");
         User user2 = singUpUser("user2");
@@ -112,7 +112,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testScoreLaterThan15Days() throws PermissionException, AlreadyInscribedException,
+    public void testScoreLaterThan15Days() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
@@ -125,7 +125,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testInscriptionAlreadyScored() throws PermissionException, AlreadyInscribedException,
+    public void testInscriptionAlreadyScored() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
             DateExpiredException, SportTestNotStartedYetException, InscriptionAlreadyScoredException {
         User user = singUpUser("user");
@@ -141,7 +141,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testSportTestNotStartedYet() throws PermissionException, AlreadyInscribedException,
+    public void testSportTestNotStartedYet() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
             DateExpiredException, SportTestNotStartedYetException, InscriptionAlreadyScoredException {
         User user = singUpUser("user");
@@ -154,7 +154,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testScoreTest() throws PermissionException, AlreadyInscribedException, InscriptionDateExpiredException,
+    public void testScoreTest() throws AlreadyInscribedException, InscriptionDateExpiredException,
             NoMoreInscriptionsAllowedException, InstanceNotFoundException, DateExpiredException,
             SportTestNotStartedYetException, InscriptionAlreadyScoredException {
         User user = singUpUser("user");
@@ -179,8 +179,8 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testAlreadyInscribed() throws PermissionException, AlreadyInscribedException,
-            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+    public void testAlreadyInscribed() throws AlreadyInscribedException, InscriptionDateExpiredException,
+            NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Solidary Race 2021");
 
@@ -209,8 +209,8 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testInscribe() throws PermissionException, AlreadyInscribedException,
-            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+    public void testInscribe() throws AlreadyInscribedException, InscriptionDateExpiredException,
+            NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Solidary Race 2021");
 
@@ -229,7 +229,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testCollectDorsalOfNonExistingSportTest() throws PermissionException, AlreadyInscribedException,
+    public void testCollectDorsalOfNonExistingSportTest() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Urban Race 2021");
@@ -249,7 +249,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testCollectDorsalOfNotAssociatedInscription() throws PermissionException, AlreadyInscribedException,
+    public void testCollectDorsalOfNotAssociatedInscription() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTestValid = addSportTest("Urban Race 2021");
@@ -262,7 +262,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testCollectDorsalSoon() throws PermissionException, AlreadyInscribedException,
+    public void testCollectDorsalSoon() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Urban Race 2021");
@@ -274,7 +274,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testCollectAlreadyCollectedInscription() throws PermissionException, AlreadyInscribedException,
+    public void testCollectAlreadyCollectedInscription() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
             NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
             InscriptionNotAssociatedException {
@@ -290,7 +290,7 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testCollectDorsalWithIncorrectCard () throws PermissionException, AlreadyInscribedException,
+    public void testCollectDorsalWithIncorrectCard () throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Urban Race 2021");
@@ -302,8 +302,8 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testCollectDorsal () throws PermissionException, AlreadyInscribedException,
-            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
+    public void testCollectDorsal () throws AlreadyInscribedException, InscriptionDateExpiredException,
+            NoMoreInscriptionsAllowedException, InstanceNotFoundException,
             NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
             InscriptionNotAssociatedException {
         User user = singUpUser("user");
@@ -329,8 +329,8 @@ public class InscriptionServiceTest {
     }
 
     @Test
-    public void testFindInscriptions() throws PermissionException, AlreadyInscribedException,
-            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+    public void testFindInscriptions() throws AlreadyInscribedException, InscriptionDateExpiredException,
+            NoMoreInscriptionsAllowedException, InstanceNotFoundException {
 
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Urban Race 2021");

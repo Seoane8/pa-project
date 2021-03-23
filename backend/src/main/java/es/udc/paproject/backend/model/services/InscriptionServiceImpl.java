@@ -71,7 +71,7 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
     @Override
     public Inscription inscribe(Long sportTestId, Long userId, String cardNumber)
-            throws InstanceNotFoundException, PermissionException, AlreadyInscribedException,
+        throws InstanceNotFoundException, AlreadyInscribedException,
             NoMoreInscriptionsAllowedException, InscriptionDateExpiredException {
 
         Optional<SportTest> sportTest = sportTestDao.findById(sportTestId);
@@ -107,8 +107,8 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
     @Override
     public int collectDorsal(Long sportTestId, Long inscriptionId, String cardNumber)
-            throws InstanceNotFoundException, PermissionException, NotAllowedYetException,
-            InscriptionNotAssociatedException, AlreadyCollectedException, IncorrectCardNumberException {
+        throws InstanceNotFoundException, NotAllowedYetException, InscriptionNotAssociatedException,
+            AlreadyCollectedException, IncorrectCardNumberException {
         Optional<SportTest> sportTest = sportTestDao.findById(sportTestId);
         Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
 
