@@ -31,6 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/users/loginFromServiceToken").permitAll()
 			.antMatchers(HttpMethod.PUT, "/users/*").hasRole("USER")
 			.antMatchers(HttpMethod.POST, "/users/*/changePassword").hasRole("USER")
+			.antMatchers(HttpMethod.POST, "/inscription").hasRole("USER")
+			.antMatchers(HttpMethod.POST, "/inscription/*/collect").hasRole("ADMIN")
 			.anyRequest().denyAll();
 
 	}
