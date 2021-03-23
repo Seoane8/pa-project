@@ -105,8 +105,8 @@ public class InscriptionController {
     @ResponseBody
     public ErrorsDto handleIncorrectCardNumberException(IncorrectCardNumberException exception, Locale locale) {
 
-        String errorMessage = messageSource.getMessage(INCORRECT_CARD_NUMBER_EXCEPTION_CODE, null,
-                INCORRECT_CARD_NUMBER_EXCEPTION_CODE, locale);
+        String errorMessage = messageSource.getMessage(INCORRECT_CARD_NUMBER_EXCEPTION_CODE,
+                new Object[] {exception.getUserName()}, INCORRECT_CARD_NUMBER_EXCEPTION_CODE, locale);
 
         return new ErrorsDto(errorMessage);
     }
