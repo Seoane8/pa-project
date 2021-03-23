@@ -213,6 +213,7 @@ public class InscriptionServiceTest {
             NoMoreInscriptionsAllowedException, InstanceNotFoundException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Solidary Race 2021");
+        int prevNumParticipants = sportTest.getNumParticipants();
 
         Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
         Optional<Inscription> foundInscription = inscriptionDao.findById(inscription.getId());
@@ -225,6 +226,7 @@ public class InscriptionServiceTest {
         assertEquals(inscription.getPrice(), foundInscription.get().getPrice());
         assertEquals(inscription.getReservationDate(), foundInscription.get().getReservationDate());
         assertEquals(inscription.getUser(), foundInscription.get().getUser());
+        assertEquals(prevNumParticipants + 1, foundInscription.get().getSportTest().getNumParticipants());
 
     }
 
