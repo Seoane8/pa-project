@@ -1,13 +1,14 @@
 package es.udc.paproject.backend.rest.controllers;
 
+import static es.udc.paproject.backend.rest.dtos.InscriptionConversor.toInscriptionDtos;
 import static es.udc.paproject.backend.rest.dtos.InscriptionConversor.toInscriptionSummaryDto;
 
+import es.udc.paproject.backend.model.entities.Inscription;
 import es.udc.paproject.backend.model.exceptions.*;
+import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.InscriptionService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
-import es.udc.paproject.backend.rest.dtos.CollectDorsalParamsDto;
-import es.udc.paproject.backend.rest.dtos.InscribeParamsDto;
-import es.udc.paproject.backend.rest.dtos.InscriptionSummaryDto;
+import es.udc.paproject.backend.rest.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -128,6 +129,16 @@ public class InscriptionController {
             InstanceNotFoundException, InscriptionNotAssociatedException {
 
         return inscriptionService.collectDorsal(params.getSportTestId(), inscriptionId, params.getCardNumber());
+    }
+
+    @PostMapping("/{userId}")
+    public BlockDto<InscriptionDto> historico(@PathVariable Long userId,
+                                              @RequestParam(defaultValue="0") int page) {
+
+        Block<Inscription> insBlock = inscriptionService.findMyInscriptions(userId,page,2);
+
+        return new BlockDto<>(toInscriptionDtos(insBlock.getItems()), insBlock.getExistMoreItems());
+
     }
 
 }
