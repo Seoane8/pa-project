@@ -8,37 +8,22 @@ import java.time.LocalDateTime;
 public class SportTestDto {
     private Long id;
     private String name;
-    private String description;
-    private LocalDateTime date;
-    private float price;
-    private int maxParticipants;
-    private int numParticipants;
-    private SportTestType type;
-    private String location;
-    private Province province;
-    private int rating;
-    private int numRatings;
-    private int version;
+    private long date;
+    private Long type;
+    private Long province;
+    private int media;
+
 
     public SportTestDto() {
     }
 
-    public SportTestDto(Long id, String name, String description, LocalDateTime date,
-                        float price, int maxParticipants, int numParticipants, SportTestType type, String location,
-                        Province province, int rating, int numRatings, int version) {
+    public SportTestDto(Long id, String name, long date, Long type, Long province, int media) {
         this.id = id;
         this.name = name;
-        this.description = description;
         this.date = date;
-        this.price = price;
-        this.maxParticipants = maxParticipants;
-        this.numParticipants = numParticipants;
         this.type = type;
-        this.location = location;
         this.province = province;
-        this.rating = rating;
-        this.numRatings = numRatings;
-        this.version = version;
+        this.media = media;
     }
 
     public Long getId() {
@@ -57,91 +42,35 @@ public class SportTestDto {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDateTime getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public int getMaxParticipants() {
-        return maxParticipants;
-    }
-
-    public void setMaxParticipants(int maxParticipants) {
-        this.maxParticipants = maxParticipants;
-    }
-
-    public int getNumParticipants() {
-        return numParticipants;
-    }
-
-    public void setNumParticipants(int numParticipants) {
-        this.numParticipants = numParticipants;
-    }
-
-    public SportTestType getType() {
+    public Long getType() {
         return type;
     }
 
-    public void setType(SportTestType type) {
+    public void setType(Long type) {
         this.type = type;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Province getProvince() {
+    public Long getProvince() {
         return province;
     }
 
-    public void setProvince(Province province) {
+    public void setProvince(Long province) {
         this.province = province;
     }
 
-    public int getRating() {
-        return rating;
+    public int getMedia() {
+        return media;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public int getNumRatings() {
-        return numRatings;
-    }
-
-    public void setNumRatings(int numRatings) {
-        this.numRatings = numRatings;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
+    public void setMedia(int media) {
+        this.media = media;
     }
 }

@@ -25,4 +25,13 @@ public class SportTestConversor {
     private final static long toMillis(LocalDateTime date) {
         return date.truncatedTo(ChronoUnit.MINUTES).atZone(ZoneOffset.systemDefault()).toInstant().toEpochMilli();
     }
+
+
+    private final static SportTestDto toSportTestDto(SportTest sporttest) {
+        return new SportTestDto(sporttest.getId(), sporttest.getName(), toMillis(sporttest.getDate()), sporttest.getType().getId(),sporttest.getProvince().getId(), sporttest.getRating());
+    }
+
+    public final static List<SportTestDto> toSportTestDtos(List<SportTest> sporttests) {
+        return sporttests.stream().map(s -> toSportTestDto(s)).collect(Collectors.toList());
+    }
 }
