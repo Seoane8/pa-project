@@ -28,6 +28,9 @@ public class InscriptionController {
     private final static String ALREADY_COLLECTED_EXCEPTION_CODE = "project.exceptions.AlreadyCollectedException";
     private final static String INSCRIPTION_NOT_ASSOCIATED_EXCEPTION_CODE = "project.exceptions.InscriptionNotAssociatedException";
     private final static String INCORRECT_CARD_NUMBER_EXCEPTION_CODE = "project.exceptions.IncorrectCardNumberException";
+    private final static String DATE_EXPIRED_EXCEPTION_CODE = "project.exceptions.DateExpiredException";
+    private final static String INSCRIPTION_ALREADY_SCORED_EXCEPTION_CODE = "project.exceptions.InscriptionAlreadyScoredException";
+    private final static String SPORTTEST_NOT_STARTED_YET_EXCEPTION_CODE = "project.exceptions.SportTestNotStartedYetException";
 
     @Autowired
     private MessageSource messageSource;
@@ -110,6 +113,48 @@ public class InscriptionController {
                 new Object[] {exception.getUserName()}, INCORRECT_CARD_NUMBER_EXCEPTION_CODE, locale);
 
         return new ErrorsDto(errorMessage);
+    }
+
+    @ExceptionHandler(DateExpiredException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorsDto handleDateExpiredException(DateExpiredException exception, Locale locale) {
+
+        String errorMessage = messageSource.getMessage(DATE_EXPIRED_EXCEPTION_CODE,
+                new Object[] {exception.getSportTestId()}, locale);
+
+        return new ErrorsDto(errorMessage);
+    }
+
+    @ExceptionHandler(InscriptionAlreadyScoredException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorsDto handleInscriptionAlreadyScoredException(InscriptionAlreadyScoredException exception, Locale locale) {
+
+        String errorMessage = messageSource.getMessage(INSCRIPTION_ALREADY_SCORED_EXCEPTION_CODE,
+                new Object[] {exception.getInscriptionId()}, locale);
+
+        return new ErrorsDto(errorMessage);
+    }
+
+    @ExceptionHandler(SportTestNotStartedYetException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorsDto handleSportTestNotStartedYetException(SportTestNotStartedYetException exception, Locale locale) {
+
+        String errorMessage = messageSource.getMessage(SPORTTEST_NOT_STARTED_YET_EXCEPTION_CODE,
+                new Object[] {exception.getSportTestId()}, locale);
+
+        return new ErrorsDto(errorMessage);
+    }
+
+    @PostMapping("/{inscriptionId}/scoretest")
+    public void scoreTest(@RequestAttribute Long userId, @PathVariable Long inscriptionId,
+                          @Validated @RequestBody ScoreDto score)
+            throws InstanceNotFoundException, DateExpiredException,
+            InscriptionAlreadyScoredException, SportTestNotStartedYetException {
+
+        inscriptionService.scoreTest(inscriptionId, userId, score.getScore());
     }
 
     @PostMapping("")
