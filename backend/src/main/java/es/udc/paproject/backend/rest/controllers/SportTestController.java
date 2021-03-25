@@ -47,7 +47,7 @@ public class SportTestController {
         }
 
         Block<SportTest> sportTestBlock = sportTestService.findSportTests(provinceId, typeId, startDateParsed,
-                finishDateParsed, page, 10);
+                finishDateParsed, page, 2);
 
         return new BlockDto<>(toSportTestSummaryDtos(sportTestBlock.getItems()), sportTestBlock.getExistMoreItems());
     }

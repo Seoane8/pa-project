@@ -24,8 +24,6 @@ public class InscriptionServiceImpl  implements InscriptionService{
     private InscriptionDao inscriptionDao;
 
 
-
-
     @Override
     public Block<Inscription> findMyInscriptions(Long userId, int page, int size) {
         Slice<Inscription> slice = inscriptionDao.findByUserIdOrderByReservationDateDesc(userId, PageRequest.of(page, size));

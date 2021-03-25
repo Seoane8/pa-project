@@ -10,7 +10,7 @@ INSERT INTO SportTestType (name) VALUES ('Running');
 INSERT INTO SportTestType (name) VALUES ('Ciclismo');
 
 INSERT INTO SportTest (name, description, date, price, maxParticipants, numParticipants, sportTestTypeId, location, provinceId, rating, numRatings, version)
-    VALUES ('Prueba 1', 'Desc', '2020-01-07 10:00', 9.95, 500, 93, 1, 'A Coruña', 1, 0, 0, 0);
+    VALUES ('Prueba 1', 'Desc', '2020-07-01 10:00', 9.95, 500, 93, 1, 'A Coruña', 1, 0, 0, 0);
 INSERT INTO SportTest (name, description, date, price, maxParticipants, numParticipants, sportTestTypeId, location, provinceId, rating, numRatings, version)
     VALUES ('Prueba 2', 'Desc', '2022-01-01 10:00', 9.95, 100, 0, 2, 'A Coruña', 1, 0, 0, 0);
 INSERT INTO SportTest (name, description, date, price, maxParticipants, numParticipants, sportTestTypeId, location, provinceId, rating, numRatings, version)
