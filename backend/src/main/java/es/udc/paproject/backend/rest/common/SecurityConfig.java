@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/users/*/changePassword").hasRole("USER")
 			.antMatchers(HttpMethod.POST, "/inscription").hasRole("USER")
 			.antMatchers(HttpMethod.POST, "/inscription/*/collect").hasRole("ADMIN")
-			.antMatchers(HttpMethod.GET, "/inscription/*").hasRole("ADMIN")
+			.antMatchers(HttpMethod.GET, "/inscription/inscriptions/*").permitAll()  //.hasRole("ADMIN")
 			.antMatchers(HttpMethod.GET, "/sporttest/tests").permitAll()
 			.anyRequest().denyAll();
 

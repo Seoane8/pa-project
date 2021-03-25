@@ -26,3 +26,9 @@ INSERT INTO User (userName, password, firstName, lastName, email, role)
     VALUES ('competitor3', '$2a$10$uicNGMO41KcyofyMPaCCwuQ89o1WM/wn5f9TGgCuFjZrfDLnECPyi', 'Pedro', 'Pérez', 'pedro_perez@mail.com', 0);
 INSERT INTO User (userName, password, firstName, lastName, email, role)
     VALUES ('employee', '$2a$10$uicNGMO41KcyofyMPaCCwuQ89o1WM/wn5f9TGgCuFjZrfDLnECPyi', 'Belén', 'Fernández', 'belen_fernandez@mail.com', 1);
+
+
+INSERT INTO Inscription (userId, sportTestId, cardNumber, reservationDate, price, dorsal, dorsalCollected, score, version)
+    VALUES (1, 1, 12345678, '2019-01-07 10:00', 9.95, 1, true, -1, 1);
+INSERT INTO Inscription (userId, sportTestId, cardNumber, reservationDate, price, dorsal, dorsalCollected, score, version)
+    VALUES (1, 2, 12345678, '2019-03-07 10:00', 9.95, 3, true, -1, 1);

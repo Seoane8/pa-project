@@ -130,8 +130,7 @@ public class InscriptionController {
 
         return inscriptionService.collectDorsal(params.getSportTestId(), inscriptionId, params.getCardNumber());
     }
-
-    @PostMapping("/{userId}")
+    @GetMapping("/inscriptions/{userId}")
     public BlockDto<InscriptionDto> historico(@PathVariable Long userId,
                                               @RequestParam(defaultValue="0") int page) {
 
