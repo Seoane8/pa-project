@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Locale;
 
 @RestController
-@RequestMapping("/inscription")
+@RequestMapping("/inscriptions")
 public class InscriptionController {
 
     private final static String ALREADY_INSCRIBED_EXCEPTION_CODE = "project.exceptions.AlreadyInscribedException";
