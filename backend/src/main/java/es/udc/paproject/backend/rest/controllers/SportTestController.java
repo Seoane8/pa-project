@@ -2,20 +2,20 @@ package es.udc.paproject.backend.rest.controllers;
 
 
 import es.udc.paproject.backend.model.entities.SportTest;
+import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.SportTestService;
 import es.udc.paproject.backend.rest.dtos.BlockDto;
+import es.udc.paproject.backend.rest.dtos.SportTestDto;
 import es.udc.paproject.backend.rest.dtos.SportTestSummaryDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static es.udc.paproject.backend.rest.dtos.SportTestConversor.toSportTestDto;
 import static es.udc.paproject.backend.rest.dtos.SportTestConversor.toSportTestSummaryDtos;
 
 @RestController
@@ -51,5 +51,10 @@ public class SportTestController {
 
         return new BlockDto<>(toSportTestSummaryDtos(sportTestBlock.getItems()), sportTestBlock.getExistMoreItems());
     }
+
+    @GetMapping("/tests/{testId}")
+    public SportTestDto findSportTest(@PathVariable Long testId) throws InstanceNotFoundException {
+                return toSportTestDto(sportTestService.findSportTestById(testId));
+            }
 
 }

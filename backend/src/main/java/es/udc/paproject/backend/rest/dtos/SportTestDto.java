@@ -1,29 +1,35 @@
 package es.udc.paproject.backend.rest.dtos;
 
-import es.udc.paproject.backend.model.entities.Province;
-import es.udc.paproject.backend.model.entities.SportTestType;
-
-import java.time.LocalDateTime;
-
 public class SportTestDto {
     private Long id;
     private String name;
     private long date;
     private Long type;
     private Long province;
-    private int media;
+    private int rating;
+    private String location;
+    private float price;
+    private int maxParticipants;
+    private int numParticipants;
+    private String description;
 
 
     public SportTestDto() {
     }
 
-    public SportTestDto(Long id, String name, long date, Long type, Long province, int media) {
+    public SportTestDto(Long id, String name, long date, Long type, Long province, int rating, String location,
+                        float price, int maxParticipants, int numParticipants, String description) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.type = type;
         this.province = province;
-        this.media = media;
+        this.rating = rating;
+        this.location = location;
+        this.price = price;
+        this.maxParticipants = maxParticipants;
+        this.numParticipants = numParticipants;
+        this.description = description;
     }
 
     public Long getId() {
@@ -66,11 +72,51 @@ public class SportTestDto {
         this.province = province;
     }
 
-    public int getMedia() {
-        return media;
+    public int getRating() {
+        return rating;
     }
 
-    public void setMedia(int media) {
-        this.media = media;
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getMaxParticipants() {
+        return maxParticipants;
+    }
+
+    public void setMaxParticipants(int maxParticipants) {
+        this.maxParticipants = maxParticipants;
+    }
+
+    public int getNumParticipants() {
+        return numParticipants;
+    }
+
+    public void setNumParticipants(int numParticipants) {
+        this.numParticipants = numParticipants;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

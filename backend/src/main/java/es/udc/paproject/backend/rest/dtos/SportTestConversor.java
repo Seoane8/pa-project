@@ -27,8 +27,9 @@ public class SportTestConversor {
     }
 
 
-    private final static SportTestDto toSportTestDto(SportTest sporttest) {
-        return new SportTestDto(sporttest.getId(), sporttest.getName(), toMillis(sporttest.getDate()), sporttest.getType().getId(),sporttest.getProvince().getId(), sporttest.getRating());
+    public final static SportTestDto toSportTestDto(SportTest sporttest) {
+        return new SportTestDto(sporttest.getId(), sporttest.getName(), toMillis(sporttest.getDate()), sporttest.getType().getId(), sporttest.getProvince().getId(),
+                sporttest.getRating(), sporttest.getLocation(), sporttest.getPrice(), sporttest.getMaxParticipants(), sporttest.getNumParticipants(), sporttest.getDescription());
     }
 
     public final static List<SportTestDto> toSportTestDtos(List<SportTest> sporttests) {
