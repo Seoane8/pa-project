@@ -169,12 +169,15 @@ public class InscriptionController {
     }
 
     @PostMapping("/{inscriptionId}/collect")
-    public int collectDorsal(@PathVariable Long inscriptionId, @Validated @RequestBody CollectDorsalParamsDto params)
+    public CollectDorsalResponseDto collectDorsal(@PathVariable Long inscriptionId, @Validated @RequestBody CollectDorsalParamsDto params)
         throws NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
             InstanceNotFoundException, InscriptionNotAssociatedException {
 
-        return inscriptionService.collectDorsal(params.getSportTestId(), inscriptionId, params.getCardNumber());
+        int dorsal = inscriptionService.collectDorsal(params.getSportTestId(), inscriptionId, params.getCardNumber());
+
+        return new CollectDorsalResponseDto(dorsal);
     }
+
     @GetMapping("/inscriptions/{userId}")
     public BlockDto<InscriptionDto> historico(@PathVariable Long userId,
                                               @RequestParam(defaultValue="0") int page) {
