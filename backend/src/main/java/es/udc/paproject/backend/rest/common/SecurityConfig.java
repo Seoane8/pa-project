@@ -31,14 +31,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/users/loginFromServiceToken").permitAll()
 			.antMatchers(HttpMethod.PUT, "/users/*").hasRole("USER")
 			.antMatchers(HttpMethod.POST, "/users/*/changePassword").hasRole("USER")
-			.antMatchers(HttpMethod.POST, "/inscription").hasRole("USER")
-			.antMatchers(HttpMethod.POST, "/inscription/*/collect").hasRole("ADMIN")
-			.antMatchers(HttpMethod.GET, "/inscription/inscriptions/*").permitAll()  //.hasRole("ADMIN")
-			.antMatchers(HttpMethod.GET, "/sporttest/tests").permitAll()
-			.antMatchers(HttpMethod.GET, "/sporttest/tests/*").permitAll()
-			.antMatchers(HttpMethod.GET, "/sporttest/provinces").permitAll()
-			.antMatchers(HttpMethod.GET, "/sporttest/sporttesttypes").permitAll()
-			.antMatchers(HttpMethod.POST, "/inscription/*/scoretest").hasRole("USER")
+			.antMatchers(HttpMethod.POST, "/inscriptions").hasRole("USER")
+			.antMatchers(HttpMethod.POST, "/inscriptions/*/collect").hasRole("ADMIN")
+			.antMatchers(HttpMethod.GET, "/inscriptions").hasRole("USER")
+			.antMatchers(HttpMethod.GET, "/sportTests").permitAll()
+			.antMatchers(HttpMethod.GET, "/sportTests/*").permitAll()
+			.antMatchers(HttpMethod.GET, "/sportTests/provinces").permitAll()
+			.antMatchers(HttpMethod.GET, "/sportTests/types").permitAll()
+			.antMatchers(HttpMethod.POST, "/inscriptions/*/score").hasRole("USER")
 			.anyRequest().denyAll();
 
 	}
