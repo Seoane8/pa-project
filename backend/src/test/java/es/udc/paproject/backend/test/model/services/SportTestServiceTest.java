@@ -140,7 +140,7 @@ public class SportTestServiceTest {
         SportTest sportTest2 = addSportTest("Race 2", LocalDateTime.now().plusMonths(2), sportTestType2, province2);
         SportTest sportTest3 = addSportTest("Race 3", LocalDateTime.now().plusMonths(3), sportTestType3, province3);
 
-        Block<SportTest> expectedBlock = new Block<>(Arrays.asList(sportTest1, sportTest2, sportTest3), false);
+        Block<SportTest> expectedBlock = new Block<>(Arrays.asList(sportTest3, sportTest2, sportTest1), false);
 
         assertEquals(expectedBlock, sportTestService.findSportTests(null, null, null, null, 0, 3));
     }

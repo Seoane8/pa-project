@@ -12,10 +12,10 @@ import es.udc.paproject.backend.rest.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
@@ -52,24 +52,12 @@ public class SportTestController {
     public BlockDto<SportTestSummaryDto> findSportTests(
             @RequestParam(required = false) Long provinceId,
             @RequestParam(required = false) Long typeId,
-            @RequestParam(required = false) String startDate,
-            @RequestParam(required = false) String finishDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate finishDate,
             @RequestParam(defaultValue="0") int page) {
 
-        LocalDate startDateParsed = null;
-        LocalDate finishDateParsed = null;
-        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        if (startDate != null) {
-            startDateParsed = LocalDate.parse(startDate, dtf);
-        }
-
-        if (finishDate != null) {
-            finishDateParsed = LocalDate.parse(finishDate, dtf);
-        }
-
-        Block<SportTest> sportTestBlock = sportTestService.findSportTests(provinceId, typeId, startDateParsed,
-                finishDateParsed, page, 2);
+        Block<SportTest> sportTestBlock = sportTestService.findSportTests(provinceId, typeId, startDate,
+                finishDate, page, 2);
 
         return new BlockDto<>(toSportTestSummaryDtos(sportTestBlock.getItems()), sportTestBlock.getExistMoreItems());
     }
