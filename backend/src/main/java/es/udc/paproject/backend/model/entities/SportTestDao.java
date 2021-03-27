@@ -15,6 +15,7 @@ public interface SportTestDao extends PagingAndSortingRepository<SportTest, Long
             " AND " +
             "(?3 IS NULL OR st.date >= ?3)" +
             " AND " +
-            "(?4 IS NULL OR st.date <= ?4)")
+            "(?4 IS NULL OR st.date <= ?4)" +
+            "ORDER BY st.date DESC")
     Slice<SportTest> findRaces(Long provinceId, Long typeId, LocalDate startDate, LocalDate finishDate, Pageable pageable);
 }
