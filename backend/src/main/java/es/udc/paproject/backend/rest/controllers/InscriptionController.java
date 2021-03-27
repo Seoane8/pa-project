@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Locale;
 
 @RestController
-@RequestMapping("/inscription")
+@RequestMapping("/inscriptions")
 public class InscriptionController {
 
     private final static String ALREADY_INSCRIBED_EXCEPTION_CODE = "project.exceptions.AlreadyInscribedException";
@@ -148,7 +148,7 @@ public class InscriptionController {
         return new ErrorsDto(errorMessage);
     }
 
-    @PostMapping("/{inscriptionId}/scoretest")
+    @PostMapping("/{inscriptionId}/score")
     public void scoreTest(@RequestAttribute Long userId, @PathVariable Long inscriptionId,
                           @Validated @RequestBody ScoreDto score)
             throws InstanceNotFoundException, DateExpiredException,
@@ -178,8 +178,8 @@ public class InscriptionController {
         return new CollectDorsalResponseDto(dorsal);
     }
 
-    @GetMapping("/inscriptions/{userId}")
-    public BlockDto<InscriptionDto> historico(@PathVariable Long userId,
+    @GetMapping("")
+    public BlockDto<InscriptionDto> historico(@RequestAttribute Long userId,
                                               @RequestParam(defaultValue="0") int page) {
 
         Block<Inscription> insBlock = inscriptionService.findMyInscriptions(userId,page,2);
