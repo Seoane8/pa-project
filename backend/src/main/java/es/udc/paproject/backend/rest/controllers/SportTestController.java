@@ -1,19 +1,23 @@
 package es.udc.paproject.backend.rest.controllers;
 
 
-import es.udc.paproject.backend.model.entities.Province;
+
 import es.udc.paproject.backend.model.entities.SportTest;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.SportTestService;
+import es.udc.paproject.backend.rest.common.ErrorsDto;
 import es.udc.paproject.backend.rest.dtos.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 import static es.udc.paproject.backend.rest.dtos.ProvinceConversor.toProvinceDtos;
 import static es.udc.paproject.backend.rest.dtos.SportTestConversor.toSportTestDto;
@@ -24,8 +28,24 @@ import static es.udc.paproject.backend.rest.dtos.SportTestTypeConversor.toSportT
 @RequestMapping("/sportTests")
 public class SportTestController {
 
+    private final static String INSTANCE_NOT_FOUND_EXCEPTION_CODE = "project.exceptions.InstanceNotFoundException";
+
+    @Autowired
+    private MessageSource messageSource;
+
     @Autowired
     private SportTestService sportTestService;
+
+    @ExceptionHandler(InstanceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorsDto handleInstanceNotFoundException(InstanceNotFoundException exception, Locale locale) {
+
+        String errorMessage = messageSource.getMessage(INSTANCE_NOT_FOUND_EXCEPTION_CODE,
+                new Object[] {exception.getName(),exception.getKey()}, locale);
+
+        return new ErrorsDto(errorMessage);
+    }
 
 
     @GetMapping("")
