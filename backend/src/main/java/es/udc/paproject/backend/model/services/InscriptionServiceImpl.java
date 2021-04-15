@@ -85,8 +85,10 @@ public class InscriptionServiceImpl  implements InscriptionService{
             throw new InstanceNotFoundException("entities.user", userId);
         }
 
-        if (inscriptionDao.existsByUserIdAndSportTestId(userId, sportTestId)){
-            throw new AlreadyInscribedException(sportTestId, user.get().getUserName());
+        Optional<Inscription> previousInscription = inscriptionDao.findByUserIdAndSportTestId(userId, sportTestId);
+
+        if (previousInscription.isPresent()){
+            throw new AlreadyInscribedException(sportTestId, previousInscription.get().getId());
         }
 
         if (LocalDateTime.now().plusHours(24).isAfter(sportTest.get().getDate())) {
