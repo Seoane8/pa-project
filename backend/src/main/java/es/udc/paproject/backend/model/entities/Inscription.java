@@ -109,4 +109,10 @@ public class Inscription {
     public int getVersion() { return version; }
 
     public void setVersion(int version) { this.version = version; }
+
+    public boolean ratingEnabled() {
+        return this.score != -1 &&
+                this.sportTest.getDate().isAfter(LocalDateTime.now()) &&
+                this.getSportTest().getDate().plusDays(15).isBefore(LocalDateTime.now());
+    }
 }

@@ -10,11 +10,12 @@ public class InscriptionDto {
     private int dorsal;
     private boolean dorsalCollected;
     private int score;
+    private boolean ratingEnabled;
 
     public InscriptionDto() {}
 
     public InscriptionDto(Long id, Long sportTestId, String sportTestName, String cardNumber,
-                          long date, int dorsal, boolean dorsalCollected, int score) {
+                          long date, int dorsal, boolean dorsalCollected, int score, boolean ratingEnabled) {
         this.id = id;
         this.sportTestId = sportTestId;
         this.sportTestName = sportTestName;
@@ -23,6 +24,7 @@ public class InscriptionDto {
         this.dorsal = dorsal;
         this.dorsalCollected = dorsalCollected;
         this.score = score;
+        this.ratingEnabled = ratingEnabled;
     }
 
     public Long getId() { return id; }
@@ -56,4 +58,8 @@ public class InscriptionDto {
     public int getScore() { return score; }
 
     public void setScore(int score) { this.score = score; }
+
+    public boolean isRatingEnabled() { return ratingEnabled; }
+
+    public void setRatingEnabled(boolean ratingEnabled) { this.ratingEnabled = ratingEnabled; }
 }

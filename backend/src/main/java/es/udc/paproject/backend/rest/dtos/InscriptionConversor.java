@@ -17,11 +17,12 @@ public class InscriptionConversor {
                         inscription.getId(),
                         inscription.getSportTest().getId(),
                         inscription.getSportTest().getName(),
-                        inscription.getCardNumber(),
+                        inscription.getCardNumber().substring(inscription.getCardNumber().length() - 4),
                         toMillis(inscription.getReservationDate()),
                         inscription.getDorsal(),
                         inscription.isDorsalCollected(),
-                        inscription.getScore()
+                        inscription.getScore(),
+                        inscription.ratingEnabled()
                     );
     }
 
