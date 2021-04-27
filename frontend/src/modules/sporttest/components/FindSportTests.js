@@ -17,7 +17,6 @@ const FindSportTests = () => {
         dispatch(actions.findSportTests(
             {startDate: startDate,
             finishDate: finishDate, page: 0}));
-        history.push('/sporttest/find-sport-tests-result');
     }
 
     return (

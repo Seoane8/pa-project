@@ -9,7 +9,7 @@ import SportTests from './SportTests';
 
 const FindSportTestsResult = () => {
 
-    const sportTestSearch = useSelector(selectors.getSportTestSearch());
+    const sportTestSearch = useSelector(selectors.getSportTestSearch);
     const dispatch = useDispatch();
 
     if (!sportTestSearch) {

@@ -12,9 +12,6 @@ const SportTests = ({sporttests}) => (
         <thead>
         <tr>
             <th scope="col">
-                <FormattedMessage id='project.global.fields.department'/>
-            </th>
-            <th scope="col">
                 <FormattedMessage id='project.global.fields.name'/>
             </th>
         </tr>
@@ -23,7 +20,7 @@ const SportTests = ({sporttests}) => (
         <tbody>
         {sporttests.map(sporttest =>
             <tr key={sporttest.id}>
-                <td><SportTestLink id={sporttest.id} name={sporttest.name}/></td>
+                <td>{sporttest.name}</td>
             </tr>
         )}
         </tbody>
@@ -32,7 +29,7 @@ const SportTests = ({sporttests}) => (
 );
 
 SportTests.propTypes = {
-    sporttests: PropTypes.array.isRequiredÇ
+    sporttests: PropTypes.array.isRequired
 };
 
 export default SportTests;

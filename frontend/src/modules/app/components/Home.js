@@ -1,9 +1,10 @@
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FindSportTests, FindSportTestsResult } from '../../sporttest';
 
 const Home = () => (
     <div className="text-center">
-        <FormattedMessage id="project.app.Home.welcome"/>
+        <FindSportTests />
+        <FindSportTestsResult />
     </div>
 );
 
