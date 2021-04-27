@@ -151,4 +151,12 @@ public class SportTest {
         this.rating = (rating * numRatings + score) / (numRatings + 1);
         this.numRatings = numRatings + 1;
     }
+
+    public boolean registrationEnabled(){
+        return date.minusHours(24).isBefore(LocalDateTime.now());
+    }
+
+    public boolean dorsalDeliveryEnabled(){
+        return (date.minusHours(12).isBefore(LocalDateTime.now()) && date.isAfter(LocalDateTime.now()));
+    }
 }

@@ -19,7 +19,7 @@ public class SportTestConversor {
 
     private final static SportTestSummaryDto toSportTestSummaryDto(SportTest sporttest) {
         return new SportTestSummaryDto(sporttest.getId(), sporttest.getName(), sporttest.getProvince().getId(),
-                sporttest.getType().getId(), toMillis(sporttest.getDate()));
+                sporttest.getType().getId(), toMillis(sporttest.getDate()), sporttest.getRating());
     }
 
     private final static long toMillis(LocalDateTime date) {
@@ -29,7 +29,8 @@ public class SportTestConversor {
 
     public final static SportTestDto toSportTestDto(SportTest sporttest) {
         return new SportTestDto(sporttest.getId(), sporttest.getName(), toMillis(sporttest.getDate()), sporttest.getType().getId(), sporttest.getProvince().getId(),
-                sporttest.getRating(), sporttest.getLocation(), sporttest.getPrice(), sporttest.getMaxParticipants(), sporttest.getNumParticipants(), sporttest.getDescription());
+                sporttest.getRating(), sporttest.getLocation(), sporttest.getPrice(), sporttest.getMaxParticipants(), sporttest.getNumParticipants(), sporttest.getDescription(),
+                sporttest.registrationEnabled(), sporttest.dorsalDeliveryEnabled());
     }
 
     public final static List<SportTestDto> toSportTestDtos(List<SportTest> sporttests) {

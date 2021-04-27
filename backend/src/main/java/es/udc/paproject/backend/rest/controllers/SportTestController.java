@@ -25,7 +25,7 @@ import static es.udc.paproject.backend.rest.dtos.SportTestConversor.toSportTestS
 import static es.udc.paproject.backend.rest.dtos.SportTestTypeConversor.toSportTestTypeDtos;
 
 @RestController
-@RequestMapping("/sportTests")
+@RequestMapping("/sportTestsSearch")
 public class SportTestController {
 
     private final static String INSTANCE_NOT_FOUND_EXCEPTION_CODE = "project.exceptions.InstanceNotFoundException";
@@ -48,7 +48,7 @@ public class SportTestController {
     }
 
 
-    @GetMapping("")
+    @GetMapping("/sportTests")
     public BlockDto<SportTestSummaryDto> findSportTests(
             @RequestParam(required = false) Long provinceId,
             @RequestParam(required = false) Long typeId,
@@ -62,7 +62,7 @@ public class SportTestController {
         return new BlockDto<>(toSportTestSummaryDtos(sportTestBlock.getItems()), sportTestBlock.getExistMoreItems());
     }
 
-    @GetMapping("/{testId}")
+    @GetMapping("/sportTests/{testId}")
     public SportTestDto findSportTest(@PathVariable Long testId) throws InstanceNotFoundException {
                 return toSportTestDto(sportTestService.findSportTestById(testId));
     }

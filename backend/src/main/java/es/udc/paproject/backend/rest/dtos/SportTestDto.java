@@ -1,5 +1,7 @@
 package es.udc.paproject.backend.rest.dtos;
 
+import java.time.LocalDateTime;
+
 public class SportTestDto {
     private Long id;
     private String name;
@@ -12,13 +14,16 @@ public class SportTestDto {
     private int maxParticipants;
     private int numParticipants;
     private String description;
+    private boolean resgistrationEnabled;
+    private boolean dorsalDeliveryEnabled;
 
 
     public SportTestDto() {
     }
 
     public SportTestDto(Long id, String name, long date, Long type, Long province, int rating, String location,
-                        float price, int maxParticipants, int numParticipants, String description) {
+                        float price, int maxParticipants, int numParticipants, String description,
+                        boolean resgistrationEnabled, boolean dorsalDeliveryEnabled ) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -30,6 +35,8 @@ public class SportTestDto {
         this.maxParticipants = maxParticipants;
         this.numParticipants = numParticipants;
         this.description = description;
+        this.resgistrationEnabled = resgistrationEnabled;
+        this.dorsalDeliveryEnabled = dorsalDeliveryEnabled;
     }
 
     public Long getId() {

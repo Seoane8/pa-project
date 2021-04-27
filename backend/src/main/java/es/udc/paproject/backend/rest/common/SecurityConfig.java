@@ -34,10 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/inscriptions").hasRole("USER")
 			.antMatchers(HttpMethod.POST, "/inscriptions/*/collect").hasRole("ADMIN")
 			.antMatchers(HttpMethod.GET, "/inscriptions").hasRole("USER")
-			.antMatchers(HttpMethod.GET, "/sportTests").permitAll()
-			.antMatchers(HttpMethod.GET, "/sportTests/*").permitAll()
-			.antMatchers(HttpMethod.GET, "/sportTests/provinces").permitAll()
-			.antMatchers(HttpMethod.GET, "/sportTests/types").permitAll()
+			.antMatchers(HttpMethod.GET, "/sportTestsSearch/sportTests").permitAll()
+			.antMatchers(HttpMethod.GET, "/sportTestsSearch/sportTests/*").permitAll()
+			.antMatchers(HttpMethod.GET, "/sportTestsSearch/provinces").permitAll()
+			.antMatchers(HttpMethod.GET, "/sportTestsSearch/types").permitAll()
 			.antMatchers(HttpMethod.POST, "/inscriptions/*/score").hasRole("USER")
 			.anyRequest().denyAll();
 
