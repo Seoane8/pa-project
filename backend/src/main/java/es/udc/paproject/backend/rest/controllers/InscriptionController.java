@@ -28,6 +28,7 @@ public class InscriptionController {
     private final static String ALREADY_COLLECTED_EXCEPTION_CODE = "project.exceptions.AlreadyCollectedException";
     private final static String INSCRIPTION_NOT_ASSOCIATED_EXCEPTION_CODE = "project.exceptions.InscriptionNotAssociatedException";
     private final static String INCORRECT_CARD_NUMBER_EXCEPTION_CODE = "project.exceptions.IncorrectCardNumberException";
+    private final static String COLLECT_DORSAL_DATE_EXPIRED_EXCEPTION_CODE = "project.exceptions.CollectDorsalDateExpiredException";
     private final static String DATE_EXPIRED_EXCEPTION_CODE = "project.exceptions.DateExpiredException";
     private final static String INSCRIPTION_ALREADY_SCORED_EXCEPTION_CODE = "project.exceptions.InscriptionAlreadyScoredException";
     private final static String SPORTTEST_NOT_STARTED_YET_EXCEPTION_CODE = "project.exceptions.SportTestNotStartedYetException";
@@ -115,6 +116,17 @@ public class InscriptionController {
         return new ErrorsDto(errorMessage);
     }
 
+    @ExceptionHandler(CollectDorsalDateExpiredException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorsDto handleCollectDorsalDateExpiredException(CollectDorsalDateExpiredException exception, Locale locale) {
+
+        String errorMessage = messageSource.getMessage(COLLECT_DORSAL_DATE_EXPIRED_EXCEPTION_CODE,
+                new Object[] {exception.getDate().toString()}, COLLECT_DORSAL_DATE_EXPIRED_EXCEPTION_CODE, locale);
+
+        return new ErrorsDto(errorMessage);
+    }
+
     @ExceptionHandler(DateExpiredException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
@@ -170,8 +182,8 @@ public class InscriptionController {
 
     @PostMapping("/{inscriptionId}/collect")
     public CollectDorsalResponseDto collectDorsal(@PathVariable Long inscriptionId, @Validated @RequestBody CollectDorsalParamsDto params)
-        throws NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
-            InstanceNotFoundException, InscriptionNotAssociatedException {
+            throws NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
+            InstanceNotFoundException, InscriptionNotAssociatedException, CollectDorsalDateExpiredException {
 
         int dorsal = inscriptionService.collectDorsal(params.getSportTestId(), inscriptionId, params.getCardNumber());
 

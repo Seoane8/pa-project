@@ -16,7 +16,7 @@ public interface InscriptionService {
             InscriptionDateExpiredException;
 
     int collectDorsal(Long sportTestId, Long inscriptionId, String cardNumber)
-        throws InstanceNotFoundException, NotAllowedYetException, InscriptionNotAssociatedException,
-            AlreadyCollectedException, IncorrectCardNumberException;
+            throws InstanceNotFoundException, NotAllowedYetException, InscriptionNotAssociatedException,
+            AlreadyCollectedException, IncorrectCardNumberException, CollectDorsalDateExpiredException;
 
 }

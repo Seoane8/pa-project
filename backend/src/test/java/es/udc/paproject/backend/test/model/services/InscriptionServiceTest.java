@@ -276,10 +276,22 @@ public class InscriptionServiceTest {
     }
 
     @Test
+    public void testCollectDorsalLate() throws AlreadyInscribedException,
+            InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException {
+        User user = singUpUser("user");
+        SportTest sportTest = addSportTest("Solidary Race 2021");
+        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
+        sportTest.setDate(LocalDateTime.now().minusHours(1));
+
+        assertThrows(CollectDorsalDateExpiredException.class, () ->
+                inscriptionService.collectDorsal(sportTest.getId(), inscription.getId(), CARD_NUMBER));
+    }
+
+    @Test
     public void testCollectAlreadyCollectedInscription() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
             NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
-            InscriptionNotAssociatedException {
+            InscriptionNotAssociatedException, CollectDorsalDateExpiredException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Urban Race 2021");
         Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
@@ -307,7 +319,7 @@ public class InscriptionServiceTest {
     public void testCollectDorsal () throws AlreadyInscribedException, InscriptionDateExpiredException,
             NoMoreInscriptionsAllowedException, InstanceNotFoundException,
             NotAllowedYetException, AlreadyCollectedException, IncorrectCardNumberException,
-            InscriptionNotAssociatedException {
+            InscriptionNotAssociatedException, CollectDorsalDateExpiredException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Urban Race 2021");
         Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);

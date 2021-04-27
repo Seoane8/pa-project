@@ -109,8 +109,8 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
     @Override
     public int collectDorsal(Long sportTestId, Long inscriptionId, String cardNumber)
-        throws InstanceNotFoundException, NotAllowedYetException, InscriptionNotAssociatedException,
-            AlreadyCollectedException, IncorrectCardNumberException {
+            throws InstanceNotFoundException, NotAllowedYetException, InscriptionNotAssociatedException,
+            AlreadyCollectedException, IncorrectCardNumberException, CollectDorsalDateExpiredException {
         Optional<SportTest> sportTest = sportTestDao.findById(sportTestId);
         Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
 
@@ -128,6 +128,10 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
         if (sportTest.get().getDate().minusHours(12).isAfter(LocalDateTime.now())) {
             throw new NotAllowedYetException(inscriptionId, sportTest.get().getDate());
+        }
+
+        if (sportTest.get().getDate().isBefore(LocalDateTime.now())) {
+            throw new CollectDorsalDateExpiredException(inscriptionId, sportTest.get().getDate());
         }
 
         if (inscription.get().isDorsalCollected()) {
