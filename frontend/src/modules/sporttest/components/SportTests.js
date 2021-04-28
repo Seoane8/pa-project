@@ -14,6 +14,9 @@ const SportTests = ({sporttests}) => (
             <th scope="col">
                 <FormattedMessage id='project.global.fields.name'/>
             </th>
+            <th scope="col">
+                <FormattedMessage id='project.global.fields.date'/>
+            </th>
         </tr>
         </thead>
 
