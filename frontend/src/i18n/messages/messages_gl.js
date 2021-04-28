@@ -13,6 +13,7 @@ export default {
     'project.global.buttons.ok': 'OK',
     'project.global.buttons.back': 'Anterior',
     'project.global.buttons.save': 'Gardar',
+    'project.global.buttons.search': 'Buscar',
     'project.global.exceptions.NetworkError': 'Erro de comunicación',
     'project.global.fields.date': 'Data',
     'project.global.fields.email': 'Correo electrónico',
@@ -26,6 +27,8 @@ export default {
     'project.global.validator.email': 'Introduzca unha dirección de correo electrónico correcta',
     'project.global.validator.passwordsDoNotMatch': 'As contrasinais non coinciden',
     'project.global.validator.required': 'Campo obrigatorio',
+
+    'project.sporttest.FindSportTestsResult.noSportTestsFound': 'Non se atoparon eventos deportivos',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contrasinal nova',
     'project.users.ChangePassword.fields.newPassword': 'Contrasinal nova',

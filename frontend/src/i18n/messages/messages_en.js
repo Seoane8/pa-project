@@ -13,6 +13,7 @@ export default {
     'project.global.buttons.ok': 'OK',
     'project.global.buttons.back': 'Back',
     'project.global.buttons.save': 'Save',
+    'project.global.buttons.search': 'Search',
     'project.global.exceptions.NetworkError': 'Network error',
     'project.global.fields.date': 'Date',
     'project.global.fields.email': 'Email address',
@@ -26,6 +27,8 @@ export default {
     'project.global.validator.email': 'Provide a correct e-mail address',
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
     'project.global.validator.required': 'Required field',
+
+    'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No Sport Test found',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirm new password',
     'project.users.ChangePassword.fields.newPassword': 'New password',
