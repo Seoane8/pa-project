@@ -21,6 +21,7 @@ const SportTests = ({sporttests}) => (
         {sporttests.map(sporttest =>
             <tr key={sporttest.id}>
                 <td>{sporttest.name}</td>
+                <td>{new Date(sporttest.date).toLocaleString()}</td>
             </tr>
         )}
         </tbody>
