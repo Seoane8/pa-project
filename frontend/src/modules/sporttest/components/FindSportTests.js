@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import * as actions from '../actions';
@@ -8,7 +7,6 @@ import * as actions from '../actions';
 const FindSportTests = () => {
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const [startDate, setStartDate] = useState('');
     const [finishDate, setFinishDate] = useState('');
 

@@ -5,10 +5,11 @@ import {Link} from 'react-router-dom';
 
 const SportTestLink = ({id, name}) => {
 
-    return null;
-        /*<Link to={`/sporttest/sport-test-details/${id}`}>
+    return (
+        <Link to={`/sporttest/sport-test-details/${id}`}>
             {name}
-        </Link>*/
+        </Link>
+    )
 
 }
 

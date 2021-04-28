@@ -2,9 +2,6 @@ import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 
-import * as selectors from '../selectors';
-import {SportTestLink} from '../../common';
-
 const SportTests = ({sporttests}) => (
 
     <table className="table table-striped table-hover">
