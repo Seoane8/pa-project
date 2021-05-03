@@ -1,15 +1,27 @@
-import {config, appFetch} from './appFetch';
+import {config, appFetch} from './appFetch'
 
 const baseUrl = '/sportTestsSearch'
 
 export const findSportTests = ({startDate, finishDate, page},
                                onSuccess) => {
 
-    let path = `${baseUrl}/sportTests?page=${page}`;
+    let path = `${baseUrl}/sportTests?page=${page}`
 
-    path += startDate ? `&startDate=${startDate}` : "";
-    path += finishDate ? `&finishDate=${finishDate}` : "";
+    path += startDate ? `&startDate=${startDate}` : ""
+    path += finishDate ? `&finishDate=${finishDate}` : ""
 
-    appFetch(path, config('GET'), onSuccess);
+    appFetch(path, config('GET'), onSuccess)
 
+}
+
+export const findAllProvinces = (onSuccess) => {
+    const path = `${baseUrl}/provinces`
+
+    appFetch(path, config('GET'), onSuccess)
+}
+
+export const findAllSportTestTypes = (onSuccess) => {
+    const path = `${baseUrl}/types`
+
+    appFetch(path, config('GET'), onSuccess)
 }
