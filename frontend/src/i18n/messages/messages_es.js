@@ -29,6 +29,10 @@ export default {
     'project.global.validator.required': 'Campo obligatorio',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No se encontraron eventos deportivos',
+    'project.sporttest.ProvinceSelector.allProvinces': 'Todas las Provincias',
+    'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'Todos los Tipos',
+    'project.global.fields.province': 'Provincia',
+    'project.global.fields.sportTestType': 'Tipo',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contraseña nueva',
     'project.users.ChangePassword.fields.newPassword': 'Contraseña nueva',
