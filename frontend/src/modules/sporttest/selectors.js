@@ -24,3 +24,6 @@ export const getSportTestTypeName = (sportTestTypes, id) => {
 
 export const getSportTestSearch = state =>
     getModuleState(state).sportTestSearch
+
+export const getSportTest = state =>
+    getModuleState(state).sportTest;

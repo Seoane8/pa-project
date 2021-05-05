@@ -6,6 +6,7 @@ const initialState = {
     provinces: null,
     sportTestTypes: null,
     sportTestSearch: null
+    sportTest: null
 }
 
 const provinces = (state = initialState.provinces, action) => {
@@ -48,10 +49,22 @@ const sportTestSearch = (state = initialState.sportTestSearch, action) => {
 
 }
 
+const sportTest = (state = initialState.sportTest, action) => {
+    switch (action.type){
+        case actionTypes.FIND_SPORTTEST_BY_ID_COMPLETED:
+            return action.sportTest;
+        case actionTypes.CLEAR_SPORTTEST:
+            return initialState.sportTest;
+        default:
+            return state;
+    }
+}
+
 const reducer = combineReducers({
     provinces,
     sportTestTypes,
-    sportTestSearch
+    sportTestSearch,
+    sportTest
 })
 
 export default reducer

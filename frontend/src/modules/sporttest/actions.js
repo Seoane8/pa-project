@@ -54,3 +54,17 @@ export const findAllSportTestTypes = () => (dispatch, getState) => {
         sportTestTypes => dispatch(findAllSportTestTypesCompleted(sportTestTypes))
     )
 }
+
+const findSportTestByIdCompleted = sportTest => ({
+    type: actionTypes.FIND_SPORTTEST_BY_ID_COMPLETED,
+    sportTest
+});
+
+export const findSportTestById = id => dispatch => {
+    backend.sportTestService.findSportTestById(id,
+        sportTest => dispatch(findSportTestByIdCompleted(sportTest)));
+}
+
+export const clearSportTest = () => ({
+    type: actionTypes.CLEAR_SPORTTEST
+});

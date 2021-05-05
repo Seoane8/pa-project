@@ -126,4 +126,20 @@ public class SportTestDto {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public boolean isResgistrationEnabled() {
+        return resgistrationEnabled;
+    }
+
+    public void setResgistrationEnabled(boolean resgistrationEnabled) {
+        this.resgistrationEnabled = resgistrationEnabled;
+    }
+
+    public boolean isDorsalDeliveryEnabled() {
+        return dorsalDeliveryEnabled;
+    }
+
+    public void setDorsalDeliveryEnabled(boolean dorsalDeliveryEnabled) {
+        this.dorsalDeliveryEnabled = dorsalDeliveryEnabled;
+    }
 }

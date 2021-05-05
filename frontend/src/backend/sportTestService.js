@@ -28,3 +28,6 @@ export const findAllSportTestTypes = (onSuccess) => {
 
     appFetch(path, config('GET'), onSuccess)
 }
+
+export const findSportTestById = (id, onSuccess) =>
+    appFetch(`${baseUrl}/sportTests/${id}`, config('GET'), onSuccess);
