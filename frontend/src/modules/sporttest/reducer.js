@@ -5,7 +5,7 @@ import * as actionTypes from './actionTypes'
 const initialState = {
     provinces: null,
     sportTestTypes: null,
-    sportTestSearch: null
+    sportTestSearch: null,
     sportTest: null
 }
 

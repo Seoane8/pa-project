@@ -1,6 +1,7 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
+import SportTestLink from '../../common/components/SportTestLink';
 
 import * as selectors from '../selectors';
 
@@ -28,7 +29,7 @@ const SportTests = ({sporttests, provinces, sportTestTypes}) => (
         <tbody>
         {sporttests.map(sporttest =>
             <tr key={sporttest.id}>
-                <td>{sporttest.name}</td>
+                <td><SportTestLink id={sporttest.id} name={sporttest.name}/></td>
                 <td>{new Date(sporttest.date).toLocaleString()}</td>
                 <td>{selectors.getProvinceName(provinces, sporttest.provinceId)}</td>
                 <td>{selectors.getSportTestTypeName(sportTestTypes, sporttest.sportTestType)}</td>
