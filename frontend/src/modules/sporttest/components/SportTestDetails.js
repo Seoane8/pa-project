@@ -38,28 +38,56 @@ const SportTestDetails = () => {
         <div>
 
             <BackLink/>
-
             <div className="card text-center">
-                <div className="card-body">
-                    <h5 className="card-title">{sportTest.name}</h5>
+                <h5 className="card-title">{sportTest.name}</h5>
+            </div>
 
+            <div className="card text-left">
+                <div className="card-body">
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.date'/>:&nbsp;
-                        {sportTest.date}
+                        {new Date(sportTest.date).toLocaleString()}
+
                     </p>
 
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.sportTestType'/>:&nbsp;
-                        {selectors.getSportTestTypeName(sportTestTypes, sportTest.typeId)}
+                        {selectors.getSportTestTypeName(sportTestTypes, sportTest.type)}
                     </p>
+
                     <p className="card-text">
                        <FormattedMessage id='project.global.fields.province'/>:&nbsp;
-                        {selectors.getProvinceName(provinces, sportTest.provinceId)}
+                        {selectors.getProvinceName(provinces, sportTest.province)}
                     </p>
 
+                    <p className="card-text">
+                        <FormattedMessage id='project.global.fields.location'/>:&nbsp;
+                        {sportTest.location}
+                    </p>
+
+                    <p className="card-text">
+                        <FormattedMessage id='project.global.fields.rating'/>
+                        : <FormattedNumber value={sportTest.rating}/>
+                    </p>
+
+                    <p className="card-text">
+                        <FormattedMessage id='project.global.fields.maxParticipants'/>
+                        : <FormattedNumber value={sportTest.maxParticipants}/>
+                    </p>
+
+                    <p className="card-text">
+                        <FormattedMessage id='project.global.fields.numParticipants'/>
+                        : <FormattedNumber value={sportTest.numParticipants}/>
+                    </p>
+
+                    <p className="card-text">
+                        <FormattedMessage id='project.global.fields.registrationEnabled'/>
+                        : <FormattedNumber value={sportTest.resgistrationEnabled}/>
+                    </p>
 
                     <p className="card-text">{sportTest.description}</p>
-                    <p className="card-text font-weight-bold">
+
+                    <p className="card-text text-center font-weight-bold">
                         <FormattedMessage id='project.global.fields.price'/>
                         : <FormattedNumber value={sportTest.price}/>€
                     </p>

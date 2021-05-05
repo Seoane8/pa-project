@@ -39,7 +39,7 @@ export default {
     'project.global.fields.maxParticipants': 'Máximo de Participantes',
     'project.global.fields.numParticipants': 'Participantes Actuales',
     'project.global.fields.description': 'Descripción',
-    'project.global.fields.registrationEnabled': 'Tipo',
+    'project.global.fields.registrationEnabled': 'Plazo de Inscripción abierto',
 
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contraseña nueva',
