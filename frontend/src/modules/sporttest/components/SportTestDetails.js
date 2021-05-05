@@ -11,9 +11,9 @@ import {BackLink} from '../../common';
 const SportTestDetails = () => {
 
     const loggedIn = useSelector(users.selectors.isLoggedIn);
-    const sportTest = useSelector(selectors.getSportTest());
-    const provinces = useSelector(selectors.getProvinces());
-    const sportTestTypes = useSelector(selectors.getSportTestTypes())
+    const sportTest = useSelector(selectors.getSportTest);
+    const provinces = useSelector(selectors.getProvinces);
+    const sportTestTypes = useSelector(selectors.getSportTestTypes)
     const dispatch = useDispatch();
     const {id} = useParams();
 
@@ -48,7 +48,7 @@ const SportTestDetails = () => {
                         {sportTest.date}
                     </p>
 
-                    {<p className="card-text">
+                    <p className="card-text">
                         <FormattedMessage id='project.global.fields.sportTestType'/>:&nbsp;
                         {selectors.getSportTestTypeName(sportTestTypes, sportTest.typeId)}
                     </p>
@@ -62,7 +62,7 @@ const SportTestDetails = () => {
                     <p className="card-text font-weight-bold">
                         <FormattedMessage id='project.global.fields.price'/>
                         : <FormattedNumber value={sportTest.price}/>€
-                    </p>}
+                    </p>
                 </div>
             </div>
         </div>
