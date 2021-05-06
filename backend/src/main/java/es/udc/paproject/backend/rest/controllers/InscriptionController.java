@@ -45,7 +45,7 @@ public class InscriptionController {
     public ErrorsDto handleAlreadyInscribedException(AlreadyInscribedException exception, Locale locale) {
 
         String errorMessage = messageSource.getMessage(ALREADY_INSCRIBED_EXCEPTION_CODE,
-                new Object[] {exception.getUserId()}, ALREADY_INSCRIBED_EXCEPTION_CODE, locale);
+                new Object[] {exception.getInscriptionId()}, ALREADY_INSCRIBED_EXCEPTION_CODE, locale);
 
         return new ErrorsDto(errorMessage);
     }
@@ -163,7 +163,7 @@ public class InscriptionController {
     @PostMapping("/{inscriptionId}/score")
     public void scoreTest(@RequestAttribute Long userId, @PathVariable Long inscriptionId,
                           @Validated @RequestBody ScoreDto score)
-            throws InstanceNotFoundException, DateExpiredException,
+            throws InstanceNotFoundException, PermissionException, DateExpiredException,
             InscriptionAlreadyScoredException, SportTestNotStartedYetException {
 
         inscriptionService.scoreTest(inscriptionId, userId, score.getScore());

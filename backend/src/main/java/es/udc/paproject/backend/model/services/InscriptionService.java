@@ -8,8 +8,8 @@ import java.util.List;
 public interface InscriptionService {
     Block<Inscription> findMyInscriptions(Long userId, int page, int size);
 
-    void scoreTest(Long inscriptionId, Long userId, int score) throws InstanceNotFoundException, DateExpiredException,
-            InscriptionAlreadyScoredException, SportTestNotStartedYetException;
+    void scoreTest(Long inscriptionId, Long userId, int score) throws InstanceNotFoundException, PermissionException,
+            DateExpiredException, InscriptionAlreadyScoredException, SportTestNotStartedYetException;
 
     Inscription inscribe(Long sportTestId, Long userId, String cardNumber)
         throws InstanceNotFoundException, AlreadyInscribedException, NoMoreInscriptionsAllowedException,

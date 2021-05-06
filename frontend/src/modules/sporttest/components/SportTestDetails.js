@@ -67,7 +67,7 @@ const SportTestDetails = () => {
 
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.rating'/>
-                        : {sportTest.rating != -1 ? <FormattedNumber value={sportTest.rating}/> :
+                        : {sportTest.rating != 0 ? <FormattedNumber value={sportTest.rating}/> :
                         <FormattedMessage id='project.sporttest.SportTestDetails.notScoredAnything'/>}
                     </p>
 

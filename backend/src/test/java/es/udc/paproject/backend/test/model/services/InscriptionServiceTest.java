@@ -107,7 +107,7 @@ public class InscriptionServiceTest {
 
         sportTest.setDate(LocalDateTime.now().minusDays(17));
 
-        assertThrows(InstanceNotFoundException.class, () ->
+        assertThrows(PermissionException.class, () ->
                 inscriptionService.scoreTest(inscription.getId(), user1.getId(), 3));
     }
 
@@ -127,7 +127,7 @@ public class InscriptionServiceTest {
     @Test
     public void testInscriptionAlreadyScored() throws AlreadyInscribedException,
             InscriptionDateExpiredException, NoMoreInscriptionsAllowedException, InstanceNotFoundException,
-            DateExpiredException, SportTestNotStartedYetException, InscriptionAlreadyScoredException {
+            PermissionException, DateExpiredException, SportTestNotStartedYetException, InscriptionAlreadyScoredException {
         User user = singUpUser("user");
         SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
         Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
@@ -155,19 +155,24 @@ public class InscriptionServiceTest {
 
     @Test
     public void testScoreTest() throws AlreadyInscribedException, InscriptionDateExpiredException,
-            NoMoreInscriptionsAllowedException, InstanceNotFoundException, DateExpiredException,
-            SportTestNotStartedYetException, InscriptionAlreadyScoredException {
-        User user = singUpUser("user");
+            NoMoreInscriptionsAllowedException, InstanceNotFoundException, PermissionException,
+            DateExpiredException, SportTestNotStartedYetException, InscriptionAlreadyScoredException {
+        User user1 = singUpUser("user1");
+        User user2 = singUpUser("user2");
         SportTest sportTest = addSportTest("Solidary Race 2021", LocalDateTime.now().plusHours(30));
-        Inscription inscription = inscriptionService.inscribe(sportTest.getId(), user.getId(), CARD_NUMBER);
-        Optional<Inscription> foundInscription = inscriptionDao.findById(inscription.getId());
+        Inscription inscription1 = inscriptionService.inscribe(sportTest.getId(), user1.getId(), CARD_NUMBER);
+        Inscription inscription2 = inscriptionService.inscribe(sportTest.getId(), user2.getId(), CARD_NUMBER);
+        Optional<Inscription> foundInscription1 = inscriptionDao.findById(inscription1.getId());
+        Optional<Inscription> foundInscription2 = inscriptionDao.findById(inscription2.getId());
 
         sportTest.setDate(LocalDateTime.now().minusDays(10));
-        inscriptionService.scoreTest(inscription.getId(), user.getId(), 4);
+        inscriptionService.scoreTest(inscription1.getId(), user1.getId(), 4);
+        inscriptionService.scoreTest(inscription2.getId(), user2.getId(), 2);
 
-        assertEquals(inscription.getScore(), foundInscription.get().getScore());
-        assertEquals(4, sportTest.getRating());
-        assertEquals(1, sportTest.getNumRatings());
+        assertEquals(inscription1.getScore(), foundInscription1.get().getScore());
+        assertEquals(inscription2.getScore(), foundInscription2.get().getScore());
+        assertEquals(3, sportTest.getRating());
+        assertEquals(2, sportTest.getNumRatings());
     }
 
     @Test
