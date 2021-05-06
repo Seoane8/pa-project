@@ -33,6 +33,13 @@ export default {
     'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'Todos os Tipos',
     'project.global.fields.province': 'Provincia',
     'project.global.fields.sportTestType': 'Tipo',
+    'project.global.fields.rating': 'Puntuación Media',
+    'project.global.fields.location': 'Lugar',
+    'project.global.fields.price': 'Prezo',
+    'project.global.fields.maxParticipants': 'Máximo de Participantes',
+    'project.global.fields.numParticipants': 'Participantes Actuais',
+    'project.global.fields.description': 'Descrición',
+    'project.global.fields.registrationEnabled': 'Prazo de Inscrición aberto',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contrasinal nova',
     'project.users.ChangePassword.fields.newPassword': 'Contrasinal nova',
