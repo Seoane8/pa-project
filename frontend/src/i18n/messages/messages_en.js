@@ -31,6 +31,7 @@ export default {
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No Sport Test found',
     'project.sporttest.ProvinceSelector.allProvinces': 'All Provinces',
     'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'All Types',
+    'project.sporttest.SportTestDetails.notScoredAnything': 'No sport test scored yet',
     'project.global.fields.province': 'Province',
     'project.global.fields.sportTestType': 'Type',
     'project.global.fields.rating': 'Average Rating',

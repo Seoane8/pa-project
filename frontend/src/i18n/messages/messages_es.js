@@ -31,6 +31,7 @@ export default {
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No se encontraron eventos deportivos',
     'project.sporttest.ProvinceSelector.allProvinces': 'Todas las Provincias',
     'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'Todos los Tipos',
+    'project.sporttest.SportTestDetails.notScoredAnything': 'Aún no se ha puntuado ninguna prueba',
     'project.global.fields.province': 'Provincia',
     'project.global.fields.sportTestType': 'Tipo',
     'project.global.fields.rating': 'Puntuación Media',

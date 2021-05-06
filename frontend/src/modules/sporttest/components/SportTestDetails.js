@@ -67,7 +67,8 @@ const SportTestDetails = () => {
 
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.rating'/>
-                        : <FormattedNumber value={sportTest.rating}/>
+                        : {sportTest.rating != -1 ? <FormattedNumber value={sportTest.rating}/> :
+                        <FormattedMessage id='project.sporttest.SportTestDetails.notScoredAnything'/>}
                     </p>
 
                     <p className="card-text">
@@ -81,11 +82,9 @@ const SportTestDetails = () => {
                     </p>
 
                     <p className="card-text">
-                        <FormattedMessage id='project.global.fields.registrationEnabled'/>
-                        : <FormattedNumber value={sportTest.resgistrationEnabled}/>
+                        <FormattedMessage id='project.global.fields.description'/>:&nbsp;
+                        {sportTest.description}
                     </p>
-
-                    <p className="card-text">{sportTest.description}</p>
 
                     <p className="card-text text-center font-weight-bold">
                         <FormattedMessage id='project.global.fields.price'/>
