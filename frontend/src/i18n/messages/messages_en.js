@@ -49,6 +49,12 @@ export default {
     'project.users.Login.title': 'Login',
     'project.users.SignUp.fields.confirmPassword': 'Confirm password',
     'project.users.SignUp.title': 'Sign up',
-    'project.users.UpdateProfile.title': 'Update profile'
+    'project.users.UpdateProfile.title': 'Update profile',
+
+    'project.inscription.InscriptionForm.title': 'Inscribe',
+    'project.global.fields.cardNumber': 'Card number',
+    'project.global.buttons.inscribe': 'Inscribe',
+    'project.inscription.InscribeCompleted.inscribedWithId': 'Inscribed with ID',
+    'project.inscription.InscribeCompleted.yourDorsalIs': 'Your dorsal is'
 
 }

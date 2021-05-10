@@ -50,6 +50,12 @@ export default {
     'project.users.Login.title': 'Autenticarse',
     'project.users.SignUp.fields.confirmPassword': 'Confirmar contraseña',
     'project.users.SignUp.title': 'Registrarse',
-    'project.users.UpdateProfile.title': 'Actualizar perfil'
+    'project.users.UpdateProfile.title': 'Actualizar perfil',
+
+    'project.inscription.InscriptionForm.title': 'Inscribirse',
+    'project.global.fields.cardNumber': 'Número de la tarjeta',
+    'project.global.buttons.inscribe': 'Inscribirse',
+    'project.inscription.InscribeCompleted.inscribedWithId': 'Inscrito con el ID',
+    'project.inscription.InscribeCompleted.yourDorsalIs': 'Tu dorsal es el'
 
 }

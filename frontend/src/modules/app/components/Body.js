@@ -7,6 +7,8 @@ import Home from './Home';
 import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users';
 import users from '../../users';
 import {SportTestDetails} from '../../sporttest';
+import {InscriptionResult} from '../../inscription';
+
 
 const Body = () => {
 
@@ -20,6 +22,7 @@ const Body = () => {
             <Switch>
                 <Route exact path="/"><Home/></Route>
                 <Route exact path="/sporttest/sport-test-details/:id"><SportTestDetails/></Route>
+                {loggedIn && <Route exact path='/inscription/inscribe-completed'><InscriptionResult/></Route>}
                 {loggedIn && <Route exact path="/users/update-profile"><UpdateProfile/></Route>}
                 {loggedIn && <Route exact path="/users/change-password"><ChangePassword/></Route>}
                 {loggedIn && <Route exact path="/users/logout"><Logout/></Route>}
