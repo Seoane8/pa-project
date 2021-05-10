@@ -34,8 +34,8 @@ const InscriptionForm = ({sportTestId}) => {
   }
 
   return (
-    <div className='card text-center'>
-      <h5 className='card-header'>
+    <div className='card text-left'>
+      <h5 className='card-header text-center'>
         <FormattedMessage id='project.inscription.InscriptionForm.title' />
       </h5>
       <Errors errors={errors} onClose={() => setErrors(null)} />
