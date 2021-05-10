@@ -1,0 +1,1 @@
+export const INSCRIBE_COMPLETED = 'project/inscription/inscribeCompleted'
