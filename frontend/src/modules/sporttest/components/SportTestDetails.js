@@ -4,7 +4,7 @@ import {FormattedMessage, FormattedNumber} from 'react-intl';
 import {useParams} from 'react-router-dom';
 
 import users from '../../users';
-import {InscriptionForm} from '../../inscription';
+import {InscriptionForm, CollectDorsalForm} from '../../inscription';
 import * as selectors from '../selectors';
 import * as actions from '../actions';
 import {BackLink} from '../../common';
@@ -14,6 +14,7 @@ const SportTestDetails = () => {
     const loggedIn = useSelector(users.selectors.isLoggedIn);
     const isAdmin = useSelector(users.selectors.isAdmin);
     const inscriptionEnabled = useSelector(selectors.isInscriptionEnabled);
+    const collectDorsalEnabled = useSelector(selectors.isCollectDorsalEnabled);
     const sportTest = useSelector(selectors.getSportTest);
     const provinces = useSelector(selectors.getProvinces);
     const sportTestTypes = useSelector(selectors.getSportTestTypes)
@@ -91,8 +92,15 @@ const SportTestDetails = () => {
                         <FormattedMessage id='project.global.fields.price'/>
                         : <FormattedNumber value={sportTest.price}/>€
                     </p>
+
                     {loggedIn && !isAdmin && inscriptionEnabled 
                         && <InscriptionForm 
+                            sportTestId={id} 
+                        />
+                    }
+
+                    {loggedIn && isAdmin && collectDorsalEnabled 
+                        && <CollectDorsalForm
                             sportTestId={id} 
                         />
                     }

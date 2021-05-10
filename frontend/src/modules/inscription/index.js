@@ -5,5 +5,6 @@ import * as selectors from './selectors'
 
 export {default as InscriptionForm} from './components/InscriptionForm'
 export {default as InscriptionResult} from './components/InscriptionResult'
+export {default as CollectDorsalForm} from './components/CollectDorsalForm'
 
 export default {actions, actionTypes, reducer, selectors}

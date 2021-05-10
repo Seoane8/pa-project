@@ -55,6 +55,10 @@ export default {
     'project.global.fields.cardNumber': 'Número da tarxeta',
     'project.global.buttons.inscribe': 'Inscribirse',
     'project.inscription.InscribeCompleted.inscribedWithId': 'Inscrito co ID',
-    'project.inscription.InscribeCompleted.yourDorsalIs': 'O teu dorsal é o'
+    'project.inscription.InscribeCompleted.yourDorsalIs': 'O teu dorsal é o',
+    'project.inscription.CollectDorsalForm.title': 'Recoller dorsal',
+    'project.global.fields.inscriptionId': 'Identificador da inscripción',
+    'project.global.buttons.collectDorsal': 'Recoller',
+    'project.inscription.ShowDorsal.message': 'O dorsal a recoller é'
 
 }
