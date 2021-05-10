@@ -153,7 +153,7 @@ public class SportTest {
     }
 
     public boolean registrationEnabled(){
-        return date.minusHours(24).isBefore(LocalDateTime.now());
+        return date.minusHours(24).isAfter(LocalDateTime.now());
     }
 
     public boolean dorsalDeliveryEnabled(){
