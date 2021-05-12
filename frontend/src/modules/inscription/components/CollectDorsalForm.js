@@ -67,9 +67,11 @@ const CollectDorsalForm = ({sportTestId}) => {
                 value={cardNumber}
                 onChange={e => setCardNumber(e.target.value)}
                 autoFocus
+                minLength='14'
+                maxLength='19'
                 required/>
               <div className='invalid-feedback'>
-                <FormattedMessage id='project.global.validator.required'/>
+                <FormattedMessage id='project.global.validator.cardNum'/>
               </div>
             </div>
           </div>

@@ -27,6 +27,7 @@ export default {
     'project.global.validator.email': 'Provide a correct e-mail address',
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
     'project.global.validator.required': 'Required field',
+    'project.global.validator.cardNum': 'The field must be between 14 and 19 characters',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No Sport Test found',
     'project.sporttest.ProvinceSelector.allProvinces': 'All Provinces',
