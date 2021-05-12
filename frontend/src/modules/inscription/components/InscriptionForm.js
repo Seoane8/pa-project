@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
+import PropTypes from 'prop-types'
 import { Errors } from '../../common'
-
 import * as actions from '../actions'
 
 const InscriptionForm = ({sportTestId}) => {
@@ -72,6 +72,10 @@ const InscriptionForm = ({sportTestId}) => {
       </div>
     </div>
   )
+}
+
+InscriptionForm.propTypes = {
+  sportTestId: PropTypes.number.isRequired
 }
 
 export default InscriptionForm

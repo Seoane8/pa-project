@@ -1,10 +1,11 @@
-import React from 'react';
-import { FormattedMessage, FormattedNumber } from 'react-intl';
+import React from 'react'
+import { FormattedMessage, FormattedNumber } from 'react-intl'
+import PropTypes from 'prop-types'
 
 const ShowDorsal = ({dorsal, onClose}) => {
 
   if (!dorsal) {
-    return null;
+    return null
   }
 
   return (
@@ -25,6 +26,11 @@ const ShowDorsal = ({dorsal, onClose}) => {
 
   );
 
+}
+
+ShowDorsal.propTypes = {
+  dorsal: PropTypes.number,
+  onClose: PropTypes.func.isRequired
 }
 
 export default ShowDorsal;

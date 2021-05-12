@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FormattedMessage } from 'react-intl'
+import PropTypes from 'prop-types'
 import { Errors } from '../../common'
 import backend from '../../../backend'
 import ShowDorsal from './ShowDorsal'
@@ -86,6 +87,10 @@ const CollectDorsalForm = ({sportTestId}) => {
       </div>
     </div>
   )
+}
+
+CollectDorsalForm.propTypes = {
+  sportTestId: PropTypes.number.isRequired
 }
 
 export default CollectDorsalForm
