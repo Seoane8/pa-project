@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
+import {FormattedDate, FormattedTime} from 'react-intl';
 import {useParams} from 'react-router-dom';
 
 import * as actions from '../actions';

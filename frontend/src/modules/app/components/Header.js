@@ -31,7 +31,7 @@ const Header = () => {
 
                     <li className="nav-item">
                         <Link className="nav-link" to="/inscription/find-inscriptions">
-                            {"incriptiooooooons"}
+                            <FormattedMessage id="project.global.fields.inscriptions" />
                         </Link>
                     </li>
                 

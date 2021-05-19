@@ -28,6 +28,11 @@ export default {
     'project.global.validator.passwordsDoNotMatch': 'Las contraseñas no coinciden',
     'project.global.validator.required': 'Campo obligatorio',
     'project.global.validator.cardNum': 'El campo debe tener entre 14 y 19 caracteres',
+    'project.global.fields.inscriptions': 'Inscripciones',
+    'project.global.fields.sportTest': 'Prueba',
+    'project.global.fields.dorsal': 'Dorsal',
+    'project.global.fields.collected': 'Recogido',
+    'project.global.fields.score': 'Puntuación',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No se encontraron eventos deportivos',
     'project.sporttest.ProvinceSelector.allProvinces': 'Todas las Provincias',
@@ -63,6 +68,8 @@ export default {
     'project.inscription.CollectDorsalForm.title': 'Recoger dorsal',
     'project.global.fields.inscriptionId': 'Identificador de la inscripción',
     'project.global.buttons.collectDorsal': 'Recoger',
-    'project.inscription.ShowDorsal.message': 'El dorsal a recoger es'
+    'project.inscription.ShowDorsal.message': 'El dorsal a recoger es',
+
+    'project.sporttest.FindInscriptionResult.noInscriptions': 'Sin inscripciones todavía'
 
 }

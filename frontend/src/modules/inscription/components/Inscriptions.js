@@ -3,6 +3,7 @@ import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
 import PropTypes from 'prop-types';
 
 import InscriptionLink from './InscriptionLink';
+import { SportTestLink } from '../../common';
 
 const Inscriptions = ({inscriptions}) => (
 
@@ -14,22 +15,22 @@ const Inscriptions = ({inscriptions}) => (
                     {"ID"}
                 </th>
                 <th scope="col">
-                    {"Fecha-Hora"}
+                    <FormattedMessage id="project.global.fields.date" />
                 </th>
                 <th scope="col">
-                    {"Prueba"}
+                    <FormattedMessage id="project.global.fields.sportTest" />
                 </th>
                 <th scope="col">
-                    {"Dorsal"}
+                    <FormattedMessage id="project.global.fields.dorsal" />
                 </th>
                 <th scope="col">
-                    {"Tarjeta Bancaria"}
+                    <FormattedMessage id="project.global.fields.cardNumber" />
                 </th>
                 <th scope="col">
-                    {"Recogido"}
+                    <FormattedMessage id="project.global.fields.collected" />   
                 </th>
                 <th scope="col">
-                    {"Puntuación"}
+                    <FormattedMessage id="project.global.fields.score" />   
                 </th>
             </tr>
         </thead>
@@ -41,11 +42,16 @@ const Inscriptions = ({inscriptions}) => (
                     <td>
                         <FormattedDate value={new Date(inscription.date)}/> - <FormattedTime value={new Date(inscription.date)}/>
                     </td>
-                    <td>{inscription.sportTestName}</td>
+                    <td>
+                        <SportTestLink 
+                            id={inscription.sportTestId} 
+                            name={inscription.sportTestName}
+                        />
+                    </td>
                     <td>{inscription.dorsal}</td>
                     <td>{inscription.cardNumber}</td>
-                    <td>{inscription.dorsalCollected}</td>
-                    <td>{inscription.score == -1 ? "S/N" : inscription.score}</td>
+                    <td>{inscription.dorsalCollected ? '✅' : '❌'}</td>
+                    <td>{inscription.score === -1 ? "S/N" : inscription.score}</td>
 
 
                 </tr>
