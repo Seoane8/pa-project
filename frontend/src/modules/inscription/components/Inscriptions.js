@@ -11,16 +11,25 @@ const Inscriptions = ({inscriptions}) => (
         <thead>
             <tr>
                 <th scope="col">
-                    {"Holaaa"}
+                    {"ID"}
                 </th>
                 <th scope="col">
-                    {"Fechaaa primo"}
+                    {"Fecha-Hora"}
                 </th>
                 <th scope="col">
-                    {"Fechaaa primo"}
+                    {"Prueba"}
                 </th>
                 <th scope="col">
-                    {"Fechaaa primo"}
+                    {"Dorsal"}
+                </th>
+                <th scope="col">
+                    {"Tarjeta Bancaria"}
+                </th>
+                <th scope="col">
+                    {"Recogido"}
+                </th>
+                <th scope="col">
+                    {"Puntuación"}
                 </th>
             </tr>
         </thead>
@@ -32,6 +41,13 @@ const Inscriptions = ({inscriptions}) => (
                     <td>
                         <FormattedDate value={new Date(inscription.date)}/> - <FormattedTime value={new Date(inscription.date)}/>
                     </td>
+                    <td>{inscription.sportTestName}</td>
+                    <td>{inscription.dorsal}</td>
+                    <td>{inscription.cardNumber}</td>
+                    <td>{inscription.dorsalCollected}</td>
+                    <td>{inscription.score == -1 ? "S/N" : inscription.score}</td>
+
+
                 </tr>
         )}
         </tbody>

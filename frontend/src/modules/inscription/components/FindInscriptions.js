@@ -12,7 +12,7 @@ const FindInscriptions = () => {
     useEffect(() => {
 
         dispatch(actions.findInscriptions({page: 0}));
-        history.push('/sporttest/find-inscriptions-result');
+        history.push('/inscription/find-inscriptions-result');
 
     });
 

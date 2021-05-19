@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const InscriptionLink = ({id}) => {
 
     return (
-        <Link to={`/sporttest/inscription-details/${id}`}>
+        <Link to={`/inscription/inscription-details/${id}`}>
             {id}
         </Link>
     );
