@@ -28,6 +28,12 @@ const Header = () => {
                 {userName ? 
 
                 <ul className="navbar-nav">
+
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/sporttest/find-inscriptions">
+                            {"incriptiooooooons"}
+                        </Link>
+                    </li>
                 
                     <li className="nav-item dropdown">
 

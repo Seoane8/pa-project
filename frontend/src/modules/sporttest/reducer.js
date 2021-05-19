@@ -6,7 +6,10 @@ const initialState = {
     provinces: null,
     sportTestTypes: null,
     sportTestSearch: null,
-    sportTest: null
+    sportTest: null,
+    inscriptionsSearch: null,
+    inscription: null
+
 }
 
 const provinces = (state = initialState.provinces, action) => {
@@ -60,11 +63,47 @@ const sportTest = (state = initialState.sportTest, action) => {
     }
 }
 
+const inscriptionsSearch = (state = initialState.inscriptionsSearch, action) => {
+
+    switch (action.type) {
+
+        case actionTypes.FIND_INSCRIPTIONS_COMPLETED:
+            return action.inscriptionsSearch;
+
+        case actionTypes.CLEAR_INSCRIPTIONS_SEARCH:
+            return initialState.inscriptionsSearch;
+
+        default:
+            return state;
+
+    }
+
+}
+
+const inscription = (state = initialState.inscription, action) => {
+
+    switch (action.type) {
+
+        case actionTypes.FIND_INSCRIPTION_COMPLETED:
+            return action.inscription;
+
+        case actionTypes.CLEAR_INSCRIPTION:
+            return initialState.inscription;
+
+        default:
+            return state;
+
+    }
+
+}
+
 const reducer = combineReducers({
     provinces,
     sportTestTypes,
     sportTestSearch,
-    sportTest
+    sportTest,
+    inscriptionsSearch,
+    inscription
 })
 
 export default reducer
