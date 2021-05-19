@@ -67,6 +67,6 @@ export default {
     'project.global.buttons.collectDorsal': 'Recoller',
     'project.inscription.ShowDorsal.message': 'O dorsal a recoller é',
 
-    'project.sporttest.FindInscriptionResult.noInscriptions': 'Sen inscripcións ainda'
+    'project.inscription.FindInscriptionResult.noInscriptions': 'Sen inscripcións ainda'
 
 }

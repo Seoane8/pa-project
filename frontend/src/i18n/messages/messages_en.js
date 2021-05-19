@@ -34,7 +34,6 @@ export default {
     'project.global.fields.collected': 'Collected',
     'project.global.fields.score': 'Score',
 
-
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No Sport Test found',
     'project.sporttest.ProvinceSelector.allProvinces': 'All Provinces',
     'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'All Types',
@@ -48,8 +47,6 @@ export default {
     'project.global.fields.numParticipants': 'Current Participants',
     'project.global.fields.description': 'Description',
     'project.global.fields.registrationEnabled': 'Registration Period Open',
-
-
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirm new password',
     'project.users.ChangePassword.fields.newPassword': 'New password',
@@ -70,6 +67,6 @@ export default {
     'project.global.buttons.collectDorsal': 'Collect',
     'project.inscription.ShowDorsal.message': 'The dorsal to collect is',
 
-    'project.sporttest.FindInscriptionResult.noInscriptions': 'No inscriptions yet'
+    'project.inscription.FindInscriptionResult.noInscriptions': 'No inscriptions yet'
 
 }

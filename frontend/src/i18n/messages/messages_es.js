@@ -48,9 +48,6 @@ export default {
     'project.global.fields.description': 'Descripción',
     'project.global.fields.registrationEnabled': 'Plazo de Inscripción abierto',
 
-    'project.inscription.FindInscriptionResult.noInscriptions': 'Ninguna incripción tadavía',
-
-
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contraseña nueva',
     'project.users.ChangePassword.fields.newPassword': 'Contraseña nueva',
     'project.users.ChangePassword.fields.oldPassword': 'Contraseña antigua',
@@ -70,6 +67,6 @@ export default {
     'project.global.buttons.collectDorsal': 'Recoger',
     'project.inscription.ShowDorsal.message': 'El dorsal a recoger es',
 
-    'project.sporttest.FindInscriptionResult.noInscriptions': 'Sin inscripciones todavía'
+    'project.inscription.FindInscriptionResult.noInscriptions':'Sin inscripciones todavía'
 
 }

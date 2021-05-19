@@ -2,7 +2,6 @@ import React from 'react';
 import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
 import PropTypes from 'prop-types';
 
-import InscriptionLink from './InscriptionLink';
 import { SportTestLink } from '../../common';
 
 const Inscriptions = ({inscriptions}) => (
@@ -38,7 +37,7 @@ const Inscriptions = ({inscriptions}) => (
         <tbody>
             {inscriptions.map(inscription =>
                 <tr key={inscription.id}>
-                    <td><InscriptionLink id={inscription.id}/></td>
+                    <td> {inscription.id}</td>
                     <td>
                         <FormattedDate value={new Date(inscription.date)}/> - <FormattedTime value={new Date(inscription.date)}/>
                     </td>
