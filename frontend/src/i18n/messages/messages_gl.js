@@ -27,6 +27,7 @@ export default {
     'project.global.validator.email': 'Introduzca unha dirección de correo electrónico correcta',
     'project.global.validator.passwordsDoNotMatch': 'As contrasinais non coinciden',
     'project.global.validator.required': 'Campo obrigatorio',
+    'project.global.validator.cardNum': 'O campo debe ter entre 14 e 19 caracteres',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'Non se atoparon eventos deportivos',
     'project.sporttest.ProvinceSelector.allProvinces': 'Todas as Provincias',
@@ -49,6 +50,16 @@ export default {
     'project.users.Login.title': 'Autenticarse',
     'project.users.SignUp.fields.confirmPassword': 'Confirmar contrasinal',
     'project.users.SignUp.title': 'Rexistrarse',
-    'project.users.UpdateProfile.title': 'Actualizar perfil'
+    'project.users.UpdateProfile.title': 'Actualizar perfil',
+
+    'project.inscription.InscriptionForm.title': 'Inscribirse',
+    'project.global.fields.cardNumber': 'Número da tarxeta',
+    'project.global.buttons.inscribe': 'Inscribirse',
+    'project.inscription.InscribeCompleted.inscribedWithId': 'Inscrito co ID',
+    'project.inscription.InscribeCompleted.yourDorsalIs': 'O teu dorsal é o',
+    'project.inscription.CollectDorsalForm.title': 'Recoller dorsal',
+    'project.global.fields.inscriptionId': 'Identificador da inscripción',
+    'project.global.buttons.collectDorsal': 'Recoller',
+    'project.inscription.ShowDorsal.message': 'O dorsal a recoller é'
 
 }

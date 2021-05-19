@@ -17,17 +17,11 @@ export const findSportTests = ({startDate, finishDate, provinceId,
 
 }
 
-export const findAllProvinces = (onSuccess) => {
-    const path = `${baseUrl}/provinces`
+export const findAllProvinces = onSuccess =>
+    appFetch(`${baseUrl}/provinces`, config('GET'), onSuccess)
 
-    appFetch(path, config('GET'), onSuccess)
-}
-
-export const findAllSportTestTypes = (onSuccess) => {
-    const path = `${baseUrl}/types`
-
-    appFetch(path, config('GET'), onSuccess)
-}
+export const findAllSportTestTypes = onSuccess =>
+    appFetch(`${baseUrl}/types`, config('GET'), onSuccess)
 
 export const findSportTestById = (id, onSuccess) =>
     appFetch(`${baseUrl}/sportTests/${id}`, config('GET'), onSuccess);

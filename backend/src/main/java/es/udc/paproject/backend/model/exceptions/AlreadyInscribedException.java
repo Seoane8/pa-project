@@ -3,12 +3,12 @@ package es.udc.paproject.backend.model.exceptions;
 public class AlreadyInscribedException extends Exception {
 
     Long sportTestId;
-    Long userId;
+    Long inscriptionId;
 
-    public AlreadyInscribedException(Long sportTestId, Long userId) {
-        super("Already inscribed in sportTest " + sportTestId + " with id " + userId);
+    public AlreadyInscribedException(Long sportTestId, Long inscriptionId) {
+        super("Already inscribed in sportTest " + sportTestId + " with id " + inscriptionId);
         this.sportTestId = sportTestId;
-        this.userId = userId;
+        this.inscriptionId = inscriptionId;
     }
 
     public Long getSportTestId() {
@@ -19,11 +19,11 @@ public class AlreadyInscribedException extends Exception {
         this.sportTestId = sportTestId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getInscriptionId() {
+        return inscriptionId;
     }
 
-    public void setUserName(Long userId) {
-        this.userId = userId;
+    public void setInscriptionId(Long inscriptionId) {
+        this.inscriptionId = inscriptionId;
     }
 }

@@ -4,6 +4,7 @@ import {FormattedMessage, FormattedNumber} from 'react-intl';
 import {useParams} from 'react-router-dom';
 
 import users from '../../users';
+import {InscriptionForm, CollectDorsalForm} from '../../inscription';
 import * as selectors from '../selectors';
 import * as actions from '../actions';
 import {BackLink} from '../../common';
@@ -11,6 +12,9 @@ import {BackLink} from '../../common';
 const SportTestDetails = () => {
 
     const loggedIn = useSelector(users.selectors.isLoggedIn);
+    const isAdmin = useSelector(users.selectors.isAdmin);
+    const inscriptionEnabled = useSelector(selectors.isInscriptionEnabled);
+    const collectDorsalEnabled = useSelector(selectors.isCollectDorsalEnabled);
     const sportTest = useSelector(selectors.getSportTest);
     const provinces = useSelector(selectors.getProvinces);
     const sportTestTypes = useSelector(selectors.getSportTestTypes)
@@ -36,14 +40,12 @@ const SportTestDetails = () => {
     return (
 
         <div>
-
             <BackLink/>
-            <div className="card text-center">
-                <h5 className="card-title">{sportTest.name}</h5>
-            </div>
-
-            <div className="card text-left">
-                <div className="card-body">
+            <div className='card' >
+                <div className="card-header text-center">
+                    <h2>{sportTest.name}</h2>
+                </div>
+                <div className="card-body text-left">
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.date'/>:&nbsp;
                         {new Date(sportTest.date).toLocaleString()}
@@ -56,7 +58,7 @@ const SportTestDetails = () => {
                     </p>
 
                     <p className="card-text">
-                       <FormattedMessage id='project.global.fields.province'/>:&nbsp;
+                    <FormattedMessage id='project.global.fields.province'/>:&nbsp;
                         {selectors.getProvinceName(provinces, sportTest.province)}
                     </p>
 
@@ -67,7 +69,7 @@ const SportTestDetails = () => {
 
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.rating'/>
-                        : {sportTest.rating != -1 ? <FormattedNumber value={sportTest.rating}/> :
+                        : {sportTest.rating !== 0 ? <FormattedNumber value={sportTest.rating}/> :
                         <FormattedMessage id='project.sporttest.SportTestDetails.notScoredAnything'/>}
                     </p>
 
@@ -90,6 +92,18 @@ const SportTestDetails = () => {
                         <FormattedMessage id='project.global.fields.price'/>
                         : <FormattedNumber value={sportTest.price}/>€
                     </p>
+
+                    {loggedIn && !isAdmin && inscriptionEnabled 
+                        && <InscriptionForm 
+                            sportTestId={id} 
+                        />
+                    }
+
+                    {loggedIn && isAdmin && collectDorsalEnabled 
+                        && <CollectDorsalForm
+                            sportTestId={id} 
+                        />
+                    }
                 </div>
             </div>
         </div>

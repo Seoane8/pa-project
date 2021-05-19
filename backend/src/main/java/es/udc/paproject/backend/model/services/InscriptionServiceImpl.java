@@ -35,7 +35,7 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
     @Override
     public void scoreTest(Long inscriptionId, Long userId, int score)
-            throws InstanceNotFoundException, DateExpiredException,
+            throws InstanceNotFoundException, PermissionException, DateExpiredException,
             InscriptionAlreadyScoredException, SportTestNotStartedYetException {
 
         Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
@@ -46,26 +46,26 @@ public class InscriptionServiceImpl  implements InscriptionService{
 
         User user = inscription.get().getUser();
 
-        if (userId != user.getId()) {
-            throw new InstanceNotFoundException("entities.user", userId);
+        if (!userId.equals(user.getId())) {
+            throw new PermissionException();
         }
 
-        Optional<SportTest> sportTest = Optional.ofNullable(inscription.get().getSportTest());
+        SportTest sportTest = inscription.get().getSportTest();
 
-        if (LocalDateTime.now().isAfter(sportTest.get().getDate().plusDays(15))) {
-            throw new DateExpiredException(sportTest.get().getId());
+        if (LocalDateTime.now().isAfter(sportTest.getDate().plusDays(15))) {
+            throw new DateExpiredException(sportTest.getId());
         }
 
         if (inscription.get().getScore() != -1) {
             throw new InscriptionAlreadyScoredException(inscriptionId);
         }
 
-        if (LocalDateTime.now().isBefore(sportTest.get().getDate())) {
-            throw new SportTestNotStartedYetException(sportTest.get().getId());
+        if (LocalDateTime.now().isBefore(sportTest.getDate())) {
+            throw new SportTestNotStartedYetException(sportTest.getId());
         }
 
         inscription.get().setScore(score);
-        sportTest.get().actualizeScore(score);
+        sportTest.actualizeScore(score);
 
     }
 

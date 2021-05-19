@@ -33,3 +33,13 @@ export const getInscription = state =>
 
 export const getInscriptionsSearch = state =>
     getModuleState(state).inscriptionsSearch;
+
+export const isInscriptionEnabled = state =>
+    getModuleState(state).sportTest
+        ? getModuleState(state).sportTest.resgistrationEnabled
+        : null
+
+export const isCollectDorsalEnabled = state =>
+    getModuleState(state).sportTest
+        ? getModuleState(state).sportTest.dorsalDeliveryEnabled
+        : null

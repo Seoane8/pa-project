@@ -27,6 +27,7 @@ export default {
     'project.global.validator.email': 'Provide a correct e-mail address',
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
     'project.global.validator.required': 'Required field',
+    'project.global.validator.cardNum': 'The field must be between 14 and 19 characters',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No Sport Test found',
     'project.sporttest.ProvinceSelector.allProvinces': 'All Provinces',
@@ -49,6 +50,16 @@ export default {
     'project.users.Login.title': 'Login',
     'project.users.SignUp.fields.confirmPassword': 'Confirm password',
     'project.users.SignUp.title': 'Sign up',
-    'project.users.UpdateProfile.title': 'Update profile'
+    'project.users.UpdateProfile.title': 'Update profile',
+
+    'project.inscription.InscriptionForm.title': 'Inscribe',
+    'project.global.fields.cardNumber': 'Card number',
+    'project.global.buttons.inscribe': 'Inscribe',
+    'project.inscription.InscribeCompleted.inscribedWithId': 'Inscribed with ID',
+    'project.inscription.InscribeCompleted.yourDorsalIs': 'Your dorsal is',
+    'project.inscription.CollectDorsalForm.title': 'Collect dorsal',
+    'project.global.fields.inscriptionId': 'Inscription identifier',
+    'project.global.buttons.collectDorsal': 'Collect',
+    'project.inscription.ShowDorsal.message': 'The dorsal to collect is'
 
 }
