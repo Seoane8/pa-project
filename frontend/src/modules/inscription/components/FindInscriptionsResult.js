@@ -19,7 +19,7 @@ const FindInscriptionsResult = () => {
     if (inscriptionsSearch.result.items.length === 0) {
         return (
             <div className="alert alert-info" role="alert">
-                {"no inscriptions papi"}
+                <FormattedMessage id='project.sporttest.FindInscriptionResult.noInscriptions'/>
             </div>
         );
     }

@@ -16,6 +16,12 @@ const Inscriptions = ({inscriptions}) => (
                 <th scope="col">
                     {"Fechaaa primo"}
                 </th>
+                <th scope="col">
+                    {"Fechaaa primo"}
+                </th>
+                <th scope="col">
+                    {"Fechaaa primo"}
+                </th>
             </tr>
         </thead>
 

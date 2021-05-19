@@ -43,6 +43,8 @@ export default {
     'project.global.fields.description': 'Descripción',
     'project.global.fields.registrationEnabled': 'Plazo de Inscripción abierto',
 
+    'project.sporttest.FindInscriptionResult.noInscriptions': 'Ninguna incripción tadavía',
+
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contraseña nueva',
     'project.users.ChangePassword.fields.newPassword': 'Contraseña nueva',

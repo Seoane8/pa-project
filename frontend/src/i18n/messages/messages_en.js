@@ -43,6 +43,8 @@ export default {
     'project.global.fields.description': 'Description',
     'project.global.fields.registrationEnabled': 'Registration Period Open',
 
+
+
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirm new password',
     'project.users.ChangePassword.fields.newPassword': 'New password',
     'project.users.ChangePassword.fields.oldPassword': 'Old password',

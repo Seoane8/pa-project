@@ -4,7 +4,3 @@ export const FIND_ALL_PROVINCES_COMPLETED = 'project/sporttest/findAllProvincesC
 export const FIND_ALL_SPORTTESTTYPES_COMPLETED = 'project/sporttest/findAllSportTestTypesCompleted'
 export const FIND_SPORTTEST_BY_ID_COMPLETED = "project/sporttest/findSportTestByIdCompleted"
 export const CLEAR_SPORTTEST = "project/sporttest/clearSportTest"
-export const CLEAR_INSCRIPTIONS_SEARCH = "project/sporttest/clearInscriptionsSearch"
-export const FIND_INSCRIPTIONS_COMPLETED = "project/sporttest/findInscriptionsCompleted"
-export const FIND_INSCRIPTION_COMPLETED = "project/sporttest/findInscriptionCompleted"
-export const CLEAR_INSCRIPTION = "project/sporttest/clearInscription"

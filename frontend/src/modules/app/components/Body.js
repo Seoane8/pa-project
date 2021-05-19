@@ -6,8 +6,8 @@ import AppGlobalComponents from './AppGlobalComponents';
 import Home from './Home';
 import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users';
 import users from '../../users';
-import {SportTestDetails, FindInscriptionsResult, FindInscriptions, InscriptionDetails} from '../../sporttest';
-import {InscriptionResult} from '../../inscription';
+import {SportTestDetails} from '../../sporttest';
+import {InscriptionResult, FindInscriptionsResult, FindInscriptions, InscriptionDetails} from '../../inscription';
 
 
 const Body = () => {
@@ -22,9 +22,9 @@ const Body = () => {
             <Switch>
                 <Route exact path="/"><Home/></Route>
                 <Route exact path="/sporttest/sport-test-details/:id"><SportTestDetails/></Route>
-                {loggedIn && <Route exact path="/sporttest/find-inscriptions"><FindInscriptions/></Route>}
-                {loggedIn && <Route exact path="/sporttest/find-inscriptions-result"><FindInscriptionsResult/></Route>}
-                {loggedIn && <Route exact path="/sporttest/inscription-details/:id"><InscriptionDetails/></Route>}
+                {loggedIn && <Route exact path="/inscription/find-inscriptions"><FindInscriptions/></Route>}
+                {loggedIn && <Route exact path="/inscription/find-inscriptions-result"><FindInscriptionsResult/></Route>}
+                {loggedIn && <Route exact path="/inscription/inscription-details/:id"><InscriptionDetails/></Route>}
                 {loggedIn && <Route exact path='/inscription/inscribe-completed'><InscriptionResult/></Route>}
                 {loggedIn && <Route exact path="/users/update-profile"><UpdateProfile/></Route>}
                 {loggedIn && <Route exact path="/users/change-password"><ChangePassword/></Route>}

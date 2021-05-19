@@ -28,12 +28,6 @@ export const getSportTestSearch = state =>
 export const getSportTest = state =>
     getModuleState(state).sportTest;
 
-export const getInscription = state =>
-    getModuleState(state).inscription;
-
-export const getInscriptionsSearch = state =>
-    getModuleState(state).inscriptionsSearch;
-
 export const isInscriptionEnabled = state =>
     getModuleState(state).sportTest
         ? getModuleState(state).sportTest.resgistrationEnabled
