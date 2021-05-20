@@ -8,5 +8,6 @@ export {default as InscriptionResult} from './components/InscriptionResult'
 export {default as CollectDorsalForm} from './components/CollectDorsalForm'
 export {default as FindInscriptionsResult} from '../inscription/components/FindInscriptionsResult';
 export {default as FindInscriptions} from '../inscription/components/FindInscriptions';
+export {default as RateRegistration} from '../inscription/components/RateRegistration';
 
 export default {actions, actionTypes, reducer, selectors}

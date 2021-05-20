@@ -3,12 +3,22 @@ import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { SportTestLink } from '../../common';
+import {useSelector} from "react-redux";
+import users from "../../users";
+import * as selectors from "../selectors";
+import RateLink from "./RateLink";
 
-const Inscriptions = ({inscriptions}) => (
+const Inscriptions = ({inscriptions}) => {
 
-    <table className="table table-striped table-hover">
+    const loggedIn = useSelector(users.selectors.isLoggedIn);
+    const isAdmin = useSelector(users.selectors.isAdmin);
+    const ratingEnabled = useSelector(selectors.isRatingEnabled);
 
-        <thead>
+    return (
+
+        <table className="table table-striped table-hover">
+
+            <thead>
             <tr>
                 <th scope="col">
                     {"ID"}
@@ -26,15 +36,15 @@ const Inscriptions = ({inscriptions}) => (
                     <FormattedMessage id="project.global.fields.cardNumber" />
                 </th>
                 <th scope="col">
-                    <FormattedMessage id="project.global.fields.collected" />   
+                    <FormattedMessage id="project.global.fields.collected" />
                 </th>
                 <th scope="col">
-                    <FormattedMessage id="project.global.fields.score" />   
+                    <FormattedMessage id="project.global.fields.score" />
                 </th>
             </tr>
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
             {inscriptions.map(inscription =>
                 <tr key={inscription.id}>
                     <td> {inscription.id}</td>
@@ -42,24 +52,41 @@ const Inscriptions = ({inscriptions}) => (
                         <FormattedDate value={new Date(inscription.date)}/> - <FormattedTime value={new Date(inscription.date)}/>
                     </td>
                     <td>
-                        <SportTestLink 
-                            id={inscription.sportTestId} 
+                        <SportTestLink
+                            id={inscription.sportTestId}
                             name={inscription.sportTestName}
                         />
                     </td>
                     <td>{inscription.dorsal}</td>
                     <td>{inscription.cardNumber}</td>
-                    <td>{inscription.dorsalCollected ? '✅' : '❌'}</td>
-                    <td>{inscription.score === -1 ? "S/N" : inscription.score}</td>
+                    <td>{inscription.dorsalCollected}</td>
+                    <td>{inscription.score == -1 ? "S/N" : inscription.score}</td>
+                    <td>
+                        <RateLink
+                            id={inscription.id}
+                        />
+                    </td>
+
+                    {loggedIn && !isAdmin && ratingEnabled
+                    && <td>
+                        <RateLink
+                            id={inscription.id}
+                        />
+                    </td>
+                    }
+
+
+
 
 
                 </tr>
-        )}
-        </tbody>
+            )}
+            </tbody>
 
-    </table>
+        </table>
 
-);
+    );
+}
 
 Inscriptions.propTypes = {
     inscriptions: PropTypes.array.isRequired

@@ -67,6 +67,10 @@ export default {
     'project.global.buttons.collectDorsal': 'Recoller',
     'project.inscription.ShowDorsal.message': 'O dorsal a recoller é',
 
-    'project.inscription.FindInscriptionResult.noInscriptions': 'Sen inscripcións ainda'
+    'project.inscription.FindInscriptionResult.noInscriptions': 'Sen inscripcións ainda',
+
+    'project.global.fields.ratingaction': 'Puntuar',
+    'project.global.buttons.selectscore': 'Selecciona a puntuacioón',
+    'project.global.buttons.score': 'Puntuar'
 
 }
