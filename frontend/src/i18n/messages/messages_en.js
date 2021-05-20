@@ -71,6 +71,7 @@ export default {
 
     'project.global.fields.ratingaction': 'Rate',
     'project.global.buttons.selectscore': 'Select score',
-    'project.global.buttons.score': 'Rate'
+    'project.global.buttons.score': 'Rate',
+    'project.global.RateRegistration.success': 'Rate successfully'
 
 }

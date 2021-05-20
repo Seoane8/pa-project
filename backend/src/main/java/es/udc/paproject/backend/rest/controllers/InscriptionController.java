@@ -161,12 +161,14 @@ public class InscriptionController {
     }
 
     @PostMapping("/{inscriptionId}/score")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void scoreTest(@RequestAttribute Long userId, @PathVariable Long inscriptionId,
                           @Validated @RequestBody ScoreDto score)
             throws InstanceNotFoundException, PermissionException, DateExpiredException,
             InscriptionAlreadyScoredException, SportTestNotStartedYetException {
 
         inscriptionService.scoreTest(inscriptionId, userId, score.getScore());
+
     }
 
     @PostMapping("")

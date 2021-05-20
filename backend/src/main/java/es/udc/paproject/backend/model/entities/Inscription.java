@@ -111,8 +111,8 @@ public class Inscription {
     public void setVersion(int version) { this.version = version; }
 
     public boolean ratingEnabled() {
-        return this.score != -1 &&
-                this.sportTest.getDate().isAfter(LocalDateTime.now()) &&
-                this.getSportTest().getDate().plusDays(15).isBefore(LocalDateTime.now());
+        return this.score == -1 &&
+                this.sportTest.getDate().isBefore(LocalDateTime.now()) &&
+                this.getSportTest().getDate().plusDays(15).isAfter(LocalDateTime.now());
     }
 }

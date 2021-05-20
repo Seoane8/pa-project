@@ -71,5 +71,6 @@ export default {
 
     'project.global.fields.ratingaction': 'Puntuar',
     'project.global.buttons.selectscore': 'Selecciona la puntuacioón',
-    'project.global.buttons.score': 'Puntuar'
+    'project.global.buttons.score': 'Puntuar',
+    'project.global.RateRegistration.success': 'Puntuado con éxito'
 }

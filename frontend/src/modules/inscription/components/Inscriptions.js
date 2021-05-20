@@ -5,14 +5,12 @@ import PropTypes from 'prop-types';
 import { SportTestLink } from '../../common';
 import {useSelector} from "react-redux";
 import users from "../../users";
-import * as selectors from "../selectors";
 import RateLink from "./RateLink";
 
 const Inscriptions = ({inscriptions}) => {
 
     const loggedIn = useSelector(users.selectors.isLoggedIn);
     const isAdmin = useSelector(users.selectors.isAdmin);
-    const ratingEnabled = useSelector(selectors.isRatingEnabled);
 
     return (
 
@@ -58,27 +56,16 @@ const Inscriptions = ({inscriptions}) => {
                         />
                     </td>
                     <td>{inscription.dorsal}</td>
-                    <td>{inscription.cardNumber}</td>
-                    <td>{inscription.dorsalCollected}</td>
-                    <td>{inscription.score == -1 ? "S/N" : inscription.score}</td>
-                    <td>
-                        <RateLink
-                            id={inscription.id}
-                        />
-                    </td>
-
-                    {loggedIn && !isAdmin && ratingEnabled
-                    && <td>
-                        <RateLink
-                            id={inscription.id}
-                        />
-                    </td>
+                    <td>{`****${inscription.cardNumber}`}</td>
+                    <td>{inscription.dorsalCollected ? '✅' : '❌'}</td>
+                    <td>{inscription.score === -1 ? "S/N" : inscription.score}</td>
+                    {loggedIn && !isAdmin && inscription.ratingEnabled
+                        && <td>
+                            <RateLink
+                                id={inscription.id}
+                            />
+                        </td>
                     }
-
-
-
-
-
                 </tr>
             )}
             </tbody>

@@ -53,3 +53,20 @@ export const findInscription = inscriptionId => dispatch => {
         dispatch(findInscriptionCompleted(inscription));
     });
 }
+
+export const updateStore = (id, score) => ({
+    type: actionTypes.UPDATE_SCORE,
+    data: {id, score}
+})
+
+export const score = (id, score, onSuccess, onErrors) => dispatch => {
+
+    backend.inscriptionService.scoreTest(
+        {id, score},
+        () => {
+            dispatch(updateStore(id, score))
+            onSuccess()
+        },
+        onErrors
+    )
+}

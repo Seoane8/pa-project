@@ -20,8 +20,8 @@ export const collectDorsal = (params, onSuccess, onErrors) => {
 
 export const scoreTest = (params, onSuccess, onErrors) => {
 
-  const {inscriptionId, ...score} = params
-  const path = `${baseUrl}/${inscriptionId}/score`
+  const {id, ...score} = params
+  const path = `${baseUrl}/${id}/score`
 
   appFetch(path, config('POST', score), onSuccess, onErrors)
 }

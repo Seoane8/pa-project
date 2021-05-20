@@ -30,6 +30,17 @@ const inscriptionsSearch = (state = initialState.inscriptionsSearch, action) => 
 
         case actionTypes.CLEAR_INSCRIPTIONS_SEARCH:
             return initialState.inscriptionsSearch;
+        
+        case actionTypes.UPDATE_SCORE:{
+            const inscriptions = state?.result.items.map(
+                ins => ins.id === action.data.id 
+                    ? {...ins, score: action.data.score, ratingEnabled: false}
+                    : ins
+            )
+            if (!inscriptions) return state
+            const newResult = {...state.result, items: inscriptions}
+            return {...state, result: newResult}
+        }
 
         default:
             return state;

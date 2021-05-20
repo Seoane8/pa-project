@@ -1,16 +1,17 @@
-import React, {useEffect} from "react";
+import React from "react";
 
 import {BackLink} from '../../common';
 import {useParams} from "react-router-dom";
 
 import * as selectors from "../selectors";
 import RateRegistrationForm from "./RateRegistrationForm";
+import { useSelector } from "react-redux";
 
 
 const RateRegistration = () => {
 
     const {id} = useParams();
-    const sportTestName = selectors.getSportTestName(id);
+    const sportTestName = useSelector(selectors.getSportTestName(parseInt(id)));
 
     if (!sportTestName){
         return null;

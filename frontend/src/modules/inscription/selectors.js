@@ -9,10 +9,10 @@ export const isRatingEnabled = state =>
         : null
 
 export const getSportTestName = id => state => {
-    const inscriptions = getModuleState(state).inscriptionsSearch.result.items
+    const inscriptions = getModuleState(state).inscriptionsSearch?.result.items
     if (!inscriptions) return ''
 
-    const inscription = inscriptions.find(inscription => inscription.id === id)
+    const inscription = inscriptions.find(ins => ins.id === id)
 
     return inscription ? inscription.sportTestName : ''
 }
