@@ -6,7 +6,7 @@ import * as actions from '../actions';
 
 const RateRegistrationForm = ({inscriptionId}) =>{
     const dispatch = useDispatch()
-    const [score, setScore] = useState(1)
+    const [score, setScore] = useState('')
     const [errors, setErrors] = useState(null)
     const [success, setSuccess] = useState(null)
     let form
@@ -19,7 +19,10 @@ const RateRegistrationForm = ({inscriptionId}) =>{
 
             dispatch(actions.score(
                 parseInt(inscriptionId), parseInt(score),
-                () => setSuccess(<FormattedMessage id='project.global.RateRegistration.success'/>),
+                () => {
+                    setSuccess(<FormattedMessage id='project.global.RateRegistration.success'/>)
+                    setErrors(null)
+                },
                 errors => setErrors(errors)
             ))
 
@@ -35,19 +38,30 @@ const RateRegistrationForm = ({inscriptionId}) =>{
             <Success message={success} onClose={() => setSuccess(null)} />
             <div className='card-body'>
                 <form ref={node => form = node}
-                      className="needs-validation" noValidate
+                      className="needs-validation justify-content-center" noValidate
                       onSubmit={(e) => handleSubmit(e)}>
-                    <div className='form-group row justify-content-md-center'>
-                        <select className="form-select" onChange={e => setScore(e.target.value)} defaultValue='1'>
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
-                            <option value='3'>3</option>
-                            <option value='4'>4</option>
-                            <option value='5'>5</option>
-                        </select>
+                    <div className='form-group row justify-content-center'>
+                        <div className='col-auto'>
+                            <select  
+                                className="form-control form-select" 
+                                value={score}
+                                onChange={e => setScore(e.target.value)}
+                                required
+                            >
+                                <option values=''></option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                            </select>
+                            <div className='invalid-feedback'>
+                                <FormattedMessage id='project.global.validator.required'/>
+                            </div>
+                        </div>
                     </div>
-                    <div className='form-group row justify-content-md-center'>
-                        <div className='col-md-auto'>
+                    <div className='form-group row justify-content-center'>
+                        <div className='col-auto'>
                             <button type='submit' className='btn btn-primary'>
                                 <FormattedMessage id='project.global.buttons.score'/>
                             </button>

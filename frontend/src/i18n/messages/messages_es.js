@@ -33,6 +33,7 @@ export default {
     'project.global.fields.dorsal': 'Dorsal',
     'project.global.fields.collected': 'Recogido',
     'project.global.fields.score': 'Puntuación',
+    'project.global.fields.notAvailable': 'No disponible',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No se encontraron eventos deportivos',
     'project.sporttest.ProvinceSelector.allProvinces': 'Todas las Provincias',

@@ -14,10 +14,11 @@ const InscriptionResult = () => {
     
     return (
         <div className='alert alert-success' role='alert'>
-          <FormattedMessage id='project.inscription.InscribeCompleted.inscribedWithId'/>
-          : <FormattedNumber value={lastInscribeInfo.id}/>
-          <FormattedMessage id='project.inscription.InscribeCompleted.yourDorsalIs'/>
-          : <FormattedNumber value={lastInscribeInfo.dorsal}/>
+            <FormattedMessage id='project.inscription.InscribeCompleted.inscribedWithId'/>
+            : <FormattedNumber value={lastInscribeInfo.id}/>
+            <br/>
+            <FormattedMessage id='project.inscription.InscribeCompleted.yourDorsalIs'/>
+            : <FormattedNumber value={lastInscribeInfo.dorsal}/>
         </div>
     )
 

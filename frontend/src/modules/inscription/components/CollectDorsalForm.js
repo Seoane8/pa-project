@@ -21,7 +21,10 @@ const CollectDorsalForm = ({sportTestId}) => {
 
       backend.inscriptionService.collectDorsal(
         {inscriptionId, sportTestId, cardNumber},
-        result => setDorsal(result.dorsal),
+        result => {
+          setDorsal(result.dorsal)
+          setErrors(null)
+        },
         errors => setErrors(errors)
       )
 

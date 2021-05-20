@@ -58,14 +58,14 @@ const Inscriptions = ({inscriptions}) => {
                     <td>{inscription.dorsal}</td>
                     <td>{`****${inscription.cardNumber}`}</td>
                     <td>{inscription.dorsalCollected ? '✅' : '❌'}</td>
-                    <td>{inscription.score === -1 ? "S/N" : inscription.score}</td>
-                    {loggedIn && !isAdmin && inscription.ratingEnabled
-                        && <td>
-                            <RateLink
-                                id={inscription.id}
-                            />
-                        </td>
-                    }
+                    <td>
+                        {inscription.score !== -1 
+                            ? inscription.score 
+                            : !isAdmin && inscription.ratingEnabled
+                                ? <RateLink id={inscription.id} />
+                                : <FormattedMessage id='project.global.fields.notAvailable' />
+                        }
+                    </td>
                 </tr>
             )}
             </tbody>
