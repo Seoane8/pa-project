@@ -35,7 +35,7 @@ const RateRegistrationForm = ({inscriptionId}) =>{
                       className="needs-validation" noValidate
                       onSubmit={(e) => handleSubmit(e)}>
                     <div className='form-group row justify-content-md-center'>
-                        <select className="form-select">
+                        <select className="form-select" onChange={e => setScore(e.target.value)}>
                             <option selected>
                                 <FormattedMessage id='project.global.buttons.selectscore'/>
                             </option>
@@ -44,7 +44,6 @@ const RateRegistrationForm = ({inscriptionId}) =>{
                             <option value='3'>3</option>
                             <option value='4'>4</option>
                             <option value='5'>5</option>
-                            onChange={e => setScore(e.target.value)}
                         </select>
                     </div>
                     <div className='form-group row justify-content-md-center'>
