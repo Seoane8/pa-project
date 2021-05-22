@@ -5,7 +5,7 @@ public class DateExpiredException extends Exception{
     private Long sportTestId;
 
     public DateExpiredException(Long sportTestId) {
-        super("Ya han pasado más de 15 días desde la celebración de la prueba con ID " + sportTestId);
+        super("More than 15 days have passed since the sportTest with ID " + sportTestId);
         this.sportTestId = sportTestId;
     }
 

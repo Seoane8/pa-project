@@ -5,7 +5,7 @@ public class SportTestNotStartedYetException extends Exception{
     private Long sportTestId;
 
     public SportTestNotStartedYetException(Long sportTestId) {
-        super("La prueba deportiva con ID " + sportTestId + " aún no comenzó");
+        super("SportTest with ID " + sportTestId + "not started yet");
         this.sportTestId = sportTestId;
     }
 

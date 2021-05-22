@@ -5,7 +5,7 @@ public class InscriptionAlreadyScoredException extends Exception{
     private Long inscriptionId;
 
     public InscriptionAlreadyScoredException(Long inscriptionId) {
-        super("La inscripción con ID " + inscriptionId + " ya ha sido puntuada previamente");
+        super("Inscription with ID " + inscriptionId + " has already been previously scored");
         this.inscriptionId = inscriptionId;
     }
 
