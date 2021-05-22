@@ -34,18 +34,20 @@ export default {
     'project.global.fields.collected': 'Recogido',
     'project.global.fields.score': 'Puntuación',
     'project.global.fields.notAvailable': 'No disponible',
+    'project.global.fields.from': 'Desde',
+    'project.global.fields.to': 'Hasta',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No se encontraron eventos deportivos',
-    'project.sporttest.ProvinceSelector.allProvinces': 'Todas las Provincias',
-    'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'Todos los Tipos',
-    'project.sporttest.SportTestDetails.notScoredAnything': 'Aún no se ha puntuado ninguna prueba',
+    'project.sporttest.ProvinceSelector.allProvinces': 'Todas',
+    'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'Todos',
+    'project.sporttest.SportTestDetails.notScoredAnything': 'Sin puntuaciones todavía',
     'project.global.fields.province': 'Provincia',
     'project.global.fields.sportTestType': 'Tipo',
-    'project.global.fields.rating': 'Puntuación Media',
+    'project.global.fields.rating': 'Puntuación',
     'project.global.fields.location': 'Lugar',
     'project.global.fields.price': 'Precio',
     'project.global.fields.maxParticipants': 'Máximo de Participantes',
-    'project.global.fields.numParticipants': 'Participantes Actuales',
+    'project.global.fields.numParticipants': 'Participantes',
     'project.global.fields.description': 'Descripción',
     'project.global.fields.registrationEnabled': 'Plazo de Inscripción abierto',
 
@@ -64,14 +66,14 @@ export default {
     'project.inscription.InscribeCompleted.inscribedWithId': 'Inscrito con el ID',
     'project.inscription.InscribeCompleted.yourDorsalIs': 'Tu dorsal es el',
     'project.inscription.CollectDorsalForm.title': 'Recoger dorsal',
-    'project.global.fields.inscriptionId': 'Identificador de la inscripción',
+    'project.global.fields.inscriptionId': 'ID de la inscripción',
     'project.global.buttons.collectDorsal': 'Recoger',
     'project.inscription.ShowDorsal.message': 'El dorsal a recoger es',
 
     'project.inscription.FindInscriptionResult.noInscriptions':'Sin inscripciones todavía',
 
     'project.global.fields.ratingaction': 'Puntuar',
-    'project.global.buttons.selectscore': 'Selecciona la puntuacioón',
+    'project.global.buttons.selectscore': 'Selecciona la puntuación',
     'project.global.buttons.score': 'Puntuar',
-    'project.global.RateRegistration.success': 'Puntuado con éxito'
+    'project.global.RateInscription.success': 'Puntuado con éxito'
 }

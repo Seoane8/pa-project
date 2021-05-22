@@ -7,42 +7,44 @@ import * as selectors from '../selectors';
 
 const SportTests = ({sporttests, provinces, sportTestTypes}) => (
 
-    <table className="table table-striped table-hover">
+    <div className='table-responsive'>
+        <table className="table table-striped table-hover">
 
-        <thead>
-        <tr>
-            <th scope="col">
-                <FormattedMessage id='project.global.fields.name'/>
-            </th>
-            <th scope="col">
-                <FormattedMessage id='project.global.fields.date'/>
-            </th>
-            <th scope="col">
-                <FormattedMessage id='project.global.fields.rating'/>
-            </th>
-            <th scope="col">
-                <FormattedMessage id='project.global.fields.province'/>
-            </th>
-            <th scope="col">
-                <FormattedMessage id='project.global.fields.sportTestType'/>
-            </th>
-        </tr>
-        </thead>
-
-        <tbody>
-        {sporttests.map(sporttest =>
-            <tr key={sporttest.id}>
-                <td><SportTestLink id={sporttest.id} name={sporttest.name}/></td>
-                <td>{new Date(sporttest.date).toLocaleString()}</td>
-                <td>{sporttest.rating !== 0 ? sporttest.rating :
-                    <FormattedMessage id='project.sporttest.SportTestDetails.notScoredAnything'/>}</td>
-                <td>{selectors.getProvinceName(provinces, sporttest.provinceId)}</td>
-                <td>{selectors.getSportTestTypeName(sportTestTypes, sporttest.sportTestType)}</td>
+            <thead>
+            <tr>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.name'/>
+                </th>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.date'/>
+                </th>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.rating'/>
+                </th>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.province'/>
+                </th>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.sportTestType'/>
+                </th>
             </tr>
-        )}
-        </tbody>
+            </thead>
 
-    </table>
+            <tbody>
+            {sporttests.map(sporttest =>
+                <tr key={sporttest.id}>
+                    <td><SportTestLink id={sporttest.id} name={sporttest.name}/></td>
+                    <td>{new Date(sporttest.date).toLocaleString()}</td>
+                    <td>{sporttest.rating !== 0 ? sporttest.rating :
+                        <FormattedMessage id='project.sporttest.SportTestDetails.notScoredAnything'/>}</td>
+                    <td>{selectors.getProvinceName(provinces, sporttest.provinceId)}</td>
+                    <td>{selectors.getSportTestTypeName(sportTestTypes, sporttest.sportTestType)}</td>
+                </tr>
+            )}
+            </tbody>
+
+        </table>
+    </div>
 );
 
 SportTests.propTypes = {

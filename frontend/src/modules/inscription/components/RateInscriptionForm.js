@@ -4,7 +4,7 @@ import {FormattedMessage} from "react-intl";
 import { useDispatch } from "react-redux";
 import * as actions from '../actions';
 
-const RateRegistrationForm = ({inscriptionId}) =>{
+const RateInscriptionForm = ({inscriptionId}) =>{
     const dispatch = useDispatch()
     const [score, setScore] = useState('')
     const [errors, setErrors] = useState(null)
@@ -20,7 +20,7 @@ const RateRegistrationForm = ({inscriptionId}) =>{
             dispatch(actions.score(
                 parseInt(inscriptionId), parseInt(score),
                 () => {
-                    setSuccess(<FormattedMessage id='project.global.RateRegistration.success'/>)
+                    setSuccess(<FormattedMessage id='project.global.RateInscription.success'/>)
                     setErrors(null)
                 },
                 errors => setErrors(errors)
@@ -35,7 +35,9 @@ const RateRegistrationForm = ({inscriptionId}) =>{
     return(
         <div className='card text-left'>
             <Errors errors={errors} onClose={() => setErrors(null)} />
-            <Success message={success} onClose={() => setSuccess(null)} />
+            <Success onClose={() => setSuccess(null)}>
+                {success}
+            </Success>
             <div className='card-body'>
                 <form ref={node => form = node}
                       className="needs-validation justify-content-center" noValidate
@@ -73,4 +75,4 @@ const RateRegistrationForm = ({inscriptionId}) =>{
     )
 }
 
-export default RateRegistrationForm;
+export default RateInscriptionForm;

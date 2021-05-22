@@ -34,18 +34,20 @@ export default {
     'project.global.fields.collected': 'Collected',
     'project.global.fields.score': 'Score',
     'project.global.fields.notAvailable': 'Not available',
+    'project.global.fields.from': 'From',
+    'project.global.fields.to': 'To',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'No Sport Test found',
-    'project.sporttest.ProvinceSelector.allProvinces': 'All Provinces',
-    'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'All Types',
-    'project.sporttest.SportTestDetails.notScoredAnything': 'No sport test scored yet',
+    'project.sporttest.ProvinceSelector.allProvinces': 'All',
+    'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'All',
+    'project.sporttest.SportTestDetails.notScoredAnything': 'No scores yet',
     'project.global.fields.province': 'Province',
     'project.global.fields.sportTestType': 'Type',
-    'project.global.fields.rating': 'Average Rating',
+    'project.global.fields.rating': 'Rating',
     'project.global.fields.location': 'Place',
     'project.global.fields.price': 'Price',
     'project.global.fields.maxParticipants': 'Maximum Participants',
-    'project.global.fields.numParticipants': 'Current Participants',
+    'project.global.fields.numParticipants': 'Participants',
     'project.global.fields.description': 'Description',
     'project.global.fields.registrationEnabled': 'Registration Period Open',
 
@@ -64,7 +66,7 @@ export default {
     'project.inscription.InscribeCompleted.inscribedWithId': 'Inscribed with ID',
     'project.inscription.InscribeCompleted.yourDorsalIs': 'Your dorsal is',
     'project.inscription.CollectDorsalForm.title': 'Collect dorsal',
-    'project.global.fields.inscriptionId': 'Inscription identifier',
+    'project.global.fields.inscriptionId': 'Inscription ID',
     'project.global.buttons.collectDorsal': 'Collect',
     'project.inscription.ShowDorsal.message': 'The dorsal to collect is',
 
@@ -73,6 +75,6 @@ export default {
     'project.global.fields.ratingaction': 'Rate',
     'project.global.buttons.selectscore': 'Select score',
     'project.global.buttons.score': 'Rate',
-    'project.global.RateRegistration.success': 'Rate successfully'
+    'project.global.RateInscription.success': 'Rate successfully'
 
 }

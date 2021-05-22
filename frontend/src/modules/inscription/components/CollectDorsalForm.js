@@ -35,7 +35,7 @@ const CollectDorsalForm = ({sportTestId}) => {
   }
 
   return (
-    <div className='card text-left'>
+    <div className='card text-left border-dark'>
       <h5 className='card-header text-center'>
         <FormattedMessage id='project.inscription.CollectDorsalForm.title' />
       </h5>
@@ -45,12 +45,12 @@ const CollectDorsalForm = ({sportTestId}) => {
         <form ref={node => form = node}
           className="needs-validation" noValidate 
           onSubmit={(e) => handleSubmit(e)}>
-          <div className='form-group row justify-content-md-center'>
+          <div className='form-group justify-content-md-center'>
             <label htmlFor='inscriptionId' 
-              className='col-md-4 col-form-label'>
+              className='col-form-label'>
               <FormattedMessage id='project.global.fields.inscriptionId'/>
             </label>
-            <div className='col-md-4'>
+            <div>
               <input type='text' id='inscriptionId' className='form-control'
                 value={inscriptionId}
                 onChange={e => setInscriptionId(e.target.value)}
@@ -61,12 +61,12 @@ const CollectDorsalForm = ({sportTestId}) => {
               </div>
             </div>
           </div>
-          <div className='form-group row justify-content-md-center'>
+          <div className='form-group justify-content-md-center'>
             <label htmlFor='cardNumber' 
-              className='col-md-4 col-form-label'>
+              className='col-form-label'>
               <FormattedMessage id='project.global.fields.cardNumber'/>
             </label>
-            <div className='col-md-4'>
+            <div>
               <input type='text' id='cardNumber' className='form-control'
                 value={cardNumber}
                 onChange={e => setCardNumber(e.target.value)}

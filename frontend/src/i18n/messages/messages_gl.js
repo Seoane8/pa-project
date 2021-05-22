@@ -34,18 +34,20 @@ export default {
     'project.global.fields.collected': 'Recollido',
     'project.global.fields.score': 'Puntuación',
     'project.global.fields.notAvailable': 'Non dispoñible',
+    'project.global.fields.from': 'Dende',
+    'project.global.fields.to': 'Ata',
 
     'project.sporttest.FindSportTestsResult.noSportTestsFound': 'Non se atoparon eventos deportivos',
-    'project.sporttest.ProvinceSelector.allProvinces': 'Todas as Provincias',
-    'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'Todos os Tipos',
-    'project.sporttest.SportTestDetails.notScoredAnything': 'Ainda non hai probas puntuadas',
+    'project.sporttest.ProvinceSelector.allProvinces': 'Todas',
+    'project.sporttest.SportTestTypeSelector.allSportTestTypes': 'Todos',
+    'project.sporttest.SportTestDetails.notScoredAnything': 'Sen puntuacións ainda',
     'project.global.fields.province': 'Provincia',
     'project.global.fields.sportTestType': 'Tipo',
-    'project.global.fields.rating': 'Puntuación Media',
+    'project.global.fields.rating': 'Puntuación',
     'project.global.fields.location': 'Lugar',
     'project.global.fields.price': 'Prezo',
     'project.global.fields.maxParticipants': 'Máximo de Participantes',
-    'project.global.fields.numParticipants': 'Participantes Actuais',
+    'project.global.fields.numParticipants': 'Participantes',
     'project.global.fields.description': 'Descrición',
     'project.global.fields.registrationEnabled': 'Prazo de Inscrición aberto',
 
@@ -64,15 +66,15 @@ export default {
     'project.inscription.InscribeCompleted.inscribedWithId': 'Inscrito co ID',
     'project.inscription.InscribeCompleted.yourDorsalIs': 'O teu dorsal é o',
     'project.inscription.CollectDorsalForm.title': 'Recoller dorsal',
-    'project.global.fields.inscriptionId': 'Identificador da inscripción',
+    'project.global.fields.inscriptionId': 'ID da inscripción',
     'project.global.buttons.collectDorsal': 'Recoller',
     'project.inscription.ShowDorsal.message': 'O dorsal a recoller é',
 
     'project.inscription.FindInscriptionResult.noInscriptions': 'Sen inscripcións ainda',
 
     'project.global.fields.ratingaction': 'Puntuar',
-    'project.global.buttons.selectscore': 'Selecciona a puntuacioón',
+    'project.global.buttons.selectscore': 'Selecciona a puntuación',
     'project.global.buttons.score': 'Puntuar',
-    'project.global.RateRegistration.success': 'Puntuado con éxito'
+    'project.global.RateInscription.success': 'Puntuado con éxito'
 
 }

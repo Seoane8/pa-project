@@ -4,11 +4,11 @@ import {BackLink} from '../../common';
 import {useParams} from "react-router-dom";
 
 import * as selectors from "../selectors";
-import RateRegistrationForm from "./RateRegistrationForm";
+import RateInscriptionForm from "./RateInscriptionForm";
 import { useSelector } from "react-redux";
 
 
-const RateRegistration = () => {
+const RateInscription = () => {
 
     const {id} = useParams();
     const sportTestName = useSelector(selectors.getSportTestName(parseInt(id)));
@@ -27,7 +27,7 @@ const RateRegistration = () => {
                     </h2>
                 </div>
                 <div className="card-body text-center">
-                    <RateRegistrationForm
+                    <RateInscriptionForm
                     inscriptionId={id}/>
 
                 </div>
@@ -36,4 +36,4 @@ const RateRegistration = () => {
     );
 }
 
-export default RateRegistration;
+export default RateInscription;

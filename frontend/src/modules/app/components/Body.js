@@ -7,7 +7,7 @@ import Home from './Home';
 import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users';
 import users from '../../users';
 import {SportTestDetails} from '../../sporttest';
-import {InscriptionResult, FindInscriptionsResult, FindInscriptions, RateRegistration} from '../../inscription';
+import {InscriptionResult, FindInscriptionsResult, FindInscriptions, RateInscription} from '../../inscription';
 
 
 const Body = () => {
@@ -24,7 +24,7 @@ const Body = () => {
                 <Route exact path="/sporttest/sport-test-details/:id"><SportTestDetails/></Route>
                 {loggedIn && <Route exact path="/inscription/find-inscriptions"><FindInscriptions/></Route>}
                 {loggedIn && <Route exact path="/inscription/find-inscriptions-result"><FindInscriptionsResult/></Route>}
-                {loggedIn && <Route exact path="/inscription/rate-registration/:id"><RateRegistration/></Route>}
+                {loggedIn && <Route exact path="/inscription/rate-inscription/:id"><RateInscription/></Route>}
                 {loggedIn && <Route exact path='/inscription/inscribe-completed'><InscriptionResult/></Route>}
                 {loggedIn && <Route exact path="/users/update-profile"><UpdateProfile/></Route>}
                 {loggedIn && <Route exact path="/users/change-password"><ChangePassword/></Route>}
@@ -40,3 +40,4 @@ const Body = () => {
 };
 
 export default Body;
+

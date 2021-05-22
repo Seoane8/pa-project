@@ -6,7 +6,7 @@ import {FormattedMessage} from "react-intl";
 const RateLink = ({id}) => {
 
     return (
-        <Link to={`/inscription/rate-registration/${id}`}>
+        <Link to={`/inscription/rate-inscription/${id}`}>
             <FormattedMessage id='project.global.fields.ratingaction'/>
         </Link>
     )
