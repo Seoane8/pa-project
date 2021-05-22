@@ -5,8 +5,7 @@ import { Errors } from '../../common'
 import backend from '../../../backend'
 import ShowDorsal from './ShowDorsal'
 
-const CollectDorsalForm = ({sportTestId}) => {
-  
+const CollectDorsalForm = ({ sportTestId }) => {
   const [cardNumber, setCardNumber] = useState('')
   const [inscriptionId, setInscriptionId] = useState('')
   const [dorsal, setDorsal] = useState(null)
@@ -14,20 +13,17 @@ const CollectDorsalForm = ({sportTestId}) => {
   let form
 
   const handleSubmit = event => {
-
     event.preventDefault()
 
     if (form.checkValidity()) {
-
       backend.inscriptionService.collectDorsal(
-        {inscriptionId, sportTestId, cardNumber},
+        { inscriptionId, sportTestId, cardNumber },
         result => {
           setDorsal(result.dorsal)
           setErrors(null)
         },
         errors => setErrors(errors)
       )
-
     } else {
       setErrors(null)
       form.classList.add('was-validated')
@@ -42,47 +38,57 @@ const CollectDorsalForm = ({sportTestId}) => {
       <Errors errors={errors} onClose={() => setErrors(null)} />
       <ShowDorsal dorsal={dorsal} onClose={() => setDorsal(null)} />
       <div className='card-body'>
-        <form ref={node => form = node}
-          className="needs-validation" noValidate 
-          onSubmit={(e) => handleSubmit(e)}>
+        <form
+          ref={node => form = node}
+          className='needs-validation' noValidate
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <div className='form-group justify-content-md-center'>
-            <label htmlFor='inscriptionId' 
-              className='col-form-label'>
-              <FormattedMessage id='project.global.fields.inscriptionId'/>
+            <label
+              htmlFor='inscriptionId'
+              className='col-form-label'
+            >
+              <FormattedMessage id='project.global.fields.inscriptionId' />
             </label>
             <div>
-              <input type='text' id='inscriptionId' className='form-control'
+              <input
+                type='text' id='inscriptionId' className='form-control'
                 value={inscriptionId}
                 onChange={e => setInscriptionId(e.target.value)}
                 autoFocus
-                required/>
+                required
+              />
               <div className='invalid-feedback'>
-                <FormattedMessage id='project.global.validator.required'/>
+                <FormattedMessage id='project.global.validator.required' />
               </div>
             </div>
           </div>
           <div className='form-group justify-content-md-center'>
-            <label htmlFor='cardNumber' 
-              className='col-form-label'>
-              <FormattedMessage id='project.global.fields.cardNumber'/>
+            <label
+              htmlFor='cardNumber'
+              className='col-form-label'
+            >
+              <FormattedMessage id='project.global.fields.cardNumber' />
             </label>
             <div>
-              <input type='text' id='cardNumber' className='form-control'
+              <input
+                type='text' id='cardNumber' className='form-control'
                 value={cardNumber}
                 onChange={e => setCardNumber(e.target.value)}
                 autoFocus
                 minLength='14'
                 maxLength='19'
-                required/>
+                required
+              />
               <div className='invalid-feedback'>
-                <FormattedMessage id='project.global.validator.cardNum'/>
+                <FormattedMessage id='project.global.validator.cardNum' />
               </div>
             </div>
           </div>
           <div className='form-group row justify-content-md-center'>
             <div className='col-md-auto'>
               <button type='submit' className='btn btn-primary'>
-                <FormattedMessage id='project.global.buttons.collectDorsal'/>
+                <FormattedMessage id='project.global.buttons.collectDorsal' />
               </button>
             </div>
           </div>

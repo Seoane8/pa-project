@@ -1,11 +1,11 @@
-import React from 'react';
-import { FindSportTests, FindSportTestsResult } from '../../sporttest';
+import React from 'react'
+import { FindSportTests, FindSportTestsResult } from '../../sporttest'
 
 const Home = () => (
-    <div className="text-center">
-        <FindSportTests />
-        <FindSportTestsResult />
-    </div>
-);
+  <div className='text-center'>
+    <FindSportTests />
+    <FindSportTestsResult />
+  </div>
+)
 
-export default Home;
+export default Home

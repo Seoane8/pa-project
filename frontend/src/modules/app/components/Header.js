@@ -1,81 +1,78 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
 
-import users from '../../users';
+import users from '../../users'
 
 const Header = () => {
+  const userName = useSelector(users.selectors.getUserName)
 
-    const userName = useSelector(users.selectors.getUserName);
+  return (
 
-    return (
+    <nav className='navbar navbar-expand-lg navbar-light bg-light border'>
+      <Link className='navbar-brand' to='/'>PA Project</Link>
+      <button
+        className='navbar-toggler' type='button'
+        data-toggle='collapse' data-target='#navbarSupportedContent'
+        aria-controls='navbarSupportedContent' aria-expanded='false'
+        aria-label='Toggle navigation'
+      >
+        <span className='navbar-toggler-icon' />
+      </button>
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light border">
-            <Link className="navbar-brand" to="/">PA Project</Link>
-            <button className="navbar-toggler" type="button" 
-                data-toggle="collapse" data-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent" aria-expanded="false" 
-                aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+      <div className='collapse navbar-collapse' id='navbarSupportedContent'>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className='navbar-nav mr-auto' />
 
-                <ul className="navbar-nav mr-auto">
-                </ul>
-                
-                {userName ? 
+        {userName
 
-                <ul className="navbar-nav">
+          ? <ul className='navbar-nav'>
 
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/inscription/find-inscriptions">
-                            <FormattedMessage id="project.global.fields.inscriptions" />
-                        </Link>
-                    </li>
-                
-                    <li className="nav-item dropdown">
+            <li className='nav-item'>
+              <Link className='nav-link' to='/inscription/find-inscriptions'>
+                <FormattedMessage id='project.global.fields.inscriptions' />
+              </Link>
+            </li>
 
-                        <a className="dropdown-toggle nav-link" href="/"
-                            data-toggle="dropdown">
-                            <span className="fas fa-user"></span>&nbsp;
-                            {userName}
-                        </a>
-                        <div className="dropdown-menu dropdown-menu-right">
-                            <Link className="dropdown-item" to="/users/update-profile">
-                                <FormattedMessage id="project.users.UpdateProfile.title"/>
-                            </Link>
-                            <Link className="dropdown-item" to="/users/change-password">
-                                <FormattedMessage id="project.users.ChangePassword.title"/>
-                            </Link>
-                            <div className="dropdown-divider"></div>
-                            <Link className="dropdown-item" to="/users/logout">
-                                <FormattedMessage id="project.app.Header.logout"/>
-                            </Link>
-                        </div>
+            <li className='nav-item dropdown'>
 
-                    </li>
+              <a
+                className='dropdown-toggle nav-link' href='/'
+                data-toggle='dropdown'
+              >
+                <span className='fas fa-user' />&nbsp;
+                {userName}
+              </a>
+              <div className='dropdown-menu dropdown-menu-right'>
+                <Link className='dropdown-item' to='/users/update-profile'>
+                  <FormattedMessage id='project.users.UpdateProfile.title' />
+                </Link>
+                <Link className='dropdown-item' to='/users/change-password'>
+                  <FormattedMessage id='project.users.ChangePassword.title' />
+                </Link>
+                <div className='dropdown-divider' />
+                <Link className='dropdown-item' to='/users/logout'>
+                  <FormattedMessage id='project.app.Header.logout' />
+                </Link>
+              </div>
 
-                </ul>
-                
-                :
+            </li>
 
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/users/login">
-                            <FormattedMessage id="project.users.Login.title"/>
-                        </Link>
-                    </li>
-                </ul>
-                
-                }
+          </ul>
 
-            </div>
-        </nav>
+          : <ul className='navbar-nav'>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/users/login'>
+                <FormattedMessage id='project.users.Login.title' />
+              </Link>
+            </li>
+          </ul>}
 
-    );
+      </div>
+    </nav>
 
-};
+  )
+}
 
-export default Header;
+export default Header

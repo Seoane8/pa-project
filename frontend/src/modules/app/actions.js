@@ -1,14 +1,14 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from './actionTypes'
 
 export const loading = () => ({
-    type: actionTypes.LOADING
-});
+  type: actionTypes.LOADING
+})
 
 export const loaded = () => ({
-    type: actionTypes.LOADED
-});
+  type: actionTypes.LOADED
+})
 
 export const error = error => ({
-    type: actionTypes.ERROR,
-    error
-});
+  type: actionTypes.ERROR,
+  error
+})

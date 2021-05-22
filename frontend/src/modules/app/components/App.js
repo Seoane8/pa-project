@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react'
-import {useDispatch} from 'react-redux'
-import {BrowserRouter as Router} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import Header from './Header'
 import Body from './Body'
@@ -9,30 +9,27 @@ import users from '../../users'
 import sporttest from '../../sporttest'
 
 const App = () => {
+  const dispatch = useDispatch()
 
-    const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(users.actions.tryLoginFromServiceToken(
+      () => dispatch(users.actions.logout())))
 
-    useEffect(() => {
-        dispatch(users.actions.tryLoginFromServiceToken(
-            () => dispatch(users.actions.logout())))
-        
-        
-        dispatch(sporttest.actions.findAllProvinces())
-        dispatch(sporttest.actions.findAllSportTestTypes())
-    })
+    dispatch(sporttest.actions.findAllProvinces())
+    dispatch(sporttest.actions.findAllSportTestTypes())
+  })
 
-    return (
+  return (
+    <div>
+      <Router>
         <div>
-            <Router>
-                <div>
-                    <Header/>
-                    <Body/>
-                </div>
-            </Router>
-            <Footer/>
+          <Header />
+          <Body />
         </div>
-    )
-
+      </Router>
+      <Footer />
+    </div>
+  )
 }
-    
+
 export default App

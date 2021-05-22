@@ -1,32 +1,31 @@
-import React from "react";
-import {useSelector} from "react-redux";
-import {FormattedMessage} from "react-intl";
-import PropTypes from 'prop-types';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
+import PropTypes from 'prop-types'
 
-import * as selectors from '../selectors';
+import * as selectors from '../selectors'
 
 const ProvinceSelector = (selectProps) => {
+  const provinces = useSelector(selectors.getProvinces)
 
-    const provinces = useSelector(selectors.getProvinces);
+  return (
 
-    return (
+    <select {...selectProps}>
 
-        <select {...selectProps}>
+      <FormattedMessage id='project.sporttest.ProvinceSelector.allProvinces'>
+        {message => (<option value=''>{message}</option>)}
+      </FormattedMessage>
 
-            <FormattedMessage id='project.sporttest.ProvinceSelector.allProvinces'>
-                {message => (<option value="">{message}</option>)}
-            </FormattedMessage>
+      {provinces && provinces.map(province =>
+        <option key={province.id} value={province.id}>{province.name}</option>
+      )}
 
-            {provinces && provinces.map(province =>
-                <option key={province.id} value={province.id}>{province.name}</option>
-            )}
-
-        </select>
-    );
+    </select>
+  )
 }
 
-ProvinceSelector.propTypes ={
-    selectProps: PropTypes.object
-};
+ProvinceSelector.propTypes = {
+  selectProps: PropTypes.object
+}
 
-export default ProvinceSelector;
+export default ProvinceSelector

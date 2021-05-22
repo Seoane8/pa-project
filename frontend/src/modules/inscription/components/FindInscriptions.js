@@ -1,23 +1,19 @@
-import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
-import * as actions from '../actions';
+import * as actions from '../actions'
 
 const FindInscriptions = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+  useEffect(() => {
+    dispatch(actions.findInscriptions({ page: 0 }))
+    history.push('/inscription/find-inscriptions-result')
+  })
 
-    useEffect(() => {
-
-        dispatch(actions.findInscriptions({page: 0}));
-        history.push('/inscription/find-inscriptions-result');
-
-    });
-
-    return null;
-
+  return null
 }
 
-export default FindInscriptions;
+export default FindInscriptions

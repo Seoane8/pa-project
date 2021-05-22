@@ -1,32 +1,31 @@
-import React from "react";
-import {useSelector} from "react-redux";
-import {FormattedMessage} from "react-intl";
-import PropTypes from 'prop-types';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
+import PropTypes from 'prop-types'
 
-import * as selectors from '../selectors';
+import * as selectors from '../selectors'
 
 const SportTestTypeSelector = (selectProps) => {
+  const sportTestTypes = useSelector(selectors.getSportTestTypes)
 
-    const sportTestTypes = useSelector(selectors.getSportTestTypes);
+  return (
 
-    return (
+    <select {...selectProps}>
 
-        <select {...selectProps}>
+      <FormattedMessage id='project.sporttest.SportTestTypeSelector.allSportTestTypes'>
+        {message => (<option value=''>{message}</option>)}
+      </FormattedMessage>
 
-            <FormattedMessage id='project.sporttest.SportTestTypeSelector.allSportTestTypes'>
-                {message => (<option value="">{message}</option>)}
-            </FormattedMessage>
+      {sportTestTypes && sportTestTypes.map(sportTestType =>
+        <option key={sportTestType.id} value={sportTestType.id}>{sportTestType.name}</option>
+      )}
 
-            {sportTestTypes && sportTestTypes.map(sportTestType =>
-                <option key={sportTestType.id} value={sportTestType.id}>{sportTestType.name}</option>
-            )}
-
-        </select>
-    );
+    </select>
+  )
 }
 
-SportTestTypeSelector.propTypes ={
-    selectProps: PropTypes.object
-};
+SportTestTypeSelector.propTypes = {
+  selectProps: PropTypes.object
+}
 
-export default SportTestTypeSelector;
+export default SportTestTypeSelector

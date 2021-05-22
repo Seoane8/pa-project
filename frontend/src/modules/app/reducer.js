@@ -1,49 +1,41 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux'
 
-import * as actionTypes from './actionTypes';
+import * as actionTypes from './actionTypes'
 
 const initialState = {
-    error: null,
-    loading: false,
-};
+  error: null,
+  loading: false
+}
 
 const error = (state = initialState.error, action) => {
+  switch (action.type) {
+    case actionTypes.ERROR:
+      return action.error
 
-    switch (action.type) {
-
-        case actionTypes.ERROR:
-            return action.error;
-
-        default:
-            return state;
-
-    }
-
+    default:
+      return state
+  }
 }
 
 const loading = (state = initialState.loading, action) => {
+  switch (action.type) {
+    case actionTypes.LOADING:
+      return true
 
-    switch (action.type) {
+    case actionTypes.LOADED:
+      return false
 
-        case actionTypes.LOADING:
-            return true;
+    case actionTypes.ERROR:
+      return false
 
-        case actionTypes.LOADED:
-            return false;
-
-        case actionTypes.ERROR:
-            return false;
-
-        default:
-            return state;
-
-    }
-
+    default:
+      return state
+  }
 }
 
 const reducer = combineReducers({
-    error,
-    loading
-});
+  error,
+  loading
+})
 
-export default reducer;
+export default reducer

@@ -1,72 +1,64 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 
 import * as actionTypes from './actionTypes'
 
 const initialState = {
-    provinces: null,
-    sportTestTypes: null,
-    sportTestSearch: null,
-    sportTest: null,
+  provinces: null,
+  sportTestTypes: null,
+  sportTestSearch: null,
+  sportTest: null
 
 }
 
 const provinces = (state = initialState.provinces, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case actionTypes.FIND_ALL_PROVINCES_COMPLETED:
+      return action.provinces
 
-        case actionTypes.FIND_ALL_PROVINCES_COMPLETED:
-            return action.provinces
-        
-        default:
-            return state
-
-    }
+    default:
+      return state
+  }
 }
 
 const sportTestTypes = (state = initialState.sportTestTypes, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case actionTypes.FIND_ALL_SPORTTESTTYPES_COMPLETED:
+      return action.sportTestTypes
 
-        case actionTypes.FIND_ALL_SPORTTESTTYPES_COMPLETED:
-            return action.sportTestTypes
-
-        default:
-            return state
-    }
+    default:
+      return state
+  }
 }
 
 const sportTestSearch = (state = initialState.sportTestSearch, action) => {
+  switch (action.type) {
+    case actionTypes.FIND_SPORTTESTS_COMPLETED:
+      return action.sportTestSearch
 
-    switch (action.type) {
+    case actionTypes.CLEAR_SPORTTEST_SEARCH:
+      return initialState.sportTestSearch
 
-        case actionTypes.FIND_SPORTTESTS_COMPLETED:
-            return action.sportTestSearch
-
-        case actionTypes.CLEAR_SPORTTEST_SEARCH:
-            return initialState.sportTestSearch
-
-        default:
-            return state
-
-    }
-
+    default:
+      return state
+  }
 }
 
 const sportTest = (state = initialState.sportTest, action) => {
-    switch (action.type){
-        case actionTypes.FIND_SPORTTEST_BY_ID_COMPLETED:
-            return action.sportTest;
-        case actionTypes.CLEAR_SPORTTEST:
-            return initialState.sportTest;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case actionTypes.FIND_SPORTTEST_BY_ID_COMPLETED:
+      return action.sportTest
+    case actionTypes.CLEAR_SPORTTEST:
+      return initialState.sportTest
+    default:
+      return state
+  }
 }
 
-
 const reducer = combineReducers({
-    provinces,
-    sportTestTypes,
-    sportTestSearch,
-    sportTest
+  provinces,
+  sportTestTypes,
+  sportTestSearch,
+  sportTest
 })
 
 export default reducer

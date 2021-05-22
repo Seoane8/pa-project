@@ -1,5 +1,5 @@
-const getModuleState = state => state.app;
+const getModuleState = state => state.app
 
-export const getError = state => getModuleState(state).error;
+export const getError = state => getModuleState(state).error
 
-export const isLoading = state => getModuleState(state).loading;
+export const isLoading = state => getModuleState(state).loading

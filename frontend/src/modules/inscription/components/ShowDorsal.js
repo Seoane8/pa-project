@@ -3,12 +3,12 @@ import { FormattedMessage, FormattedNumber } from 'react-intl'
 import PropTypes from 'prop-types'
 import Success from '../../common/components/Success'
 
-const ShowDorsal = ({dorsal, onClose}) => (
+const ShowDorsal = ({ dorsal, onClose }) => (
 
   <Success onClose={onClose}>
     {dorsal
       ? <>
-        <FormattedMessage id='project.inscription.ShowDorsal.message'/>
+        <FormattedMessage id='project.inscription.ShowDorsal.message' />
         : <FormattedNumber value={dorsal} />
       </>
       : null}
@@ -21,4 +21,4 @@ ShowDorsal.propTypes = {
   onClose: PropTypes.func.isRequired
 }
 
-export default ShowDorsal;
+export default ShowDorsal
