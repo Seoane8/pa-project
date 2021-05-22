@@ -36,17 +36,6 @@ public class SportTestController {
     @Autowired
     private SportTestService sportTestService;
 
-    @ExceptionHandler(InstanceNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
-    public ErrorsDto handleInstanceNotFoundException(InstanceNotFoundException exception, Locale locale) {
-
-        String errorMessage = messageSource.getMessage(INSTANCE_NOT_FOUND_EXCEPTION_CODE,
-                new Object[] {exception.getName(),exception.getKey()}, locale);
-
-        return new ErrorsDto(errorMessage);
-    }
-
 
     @GetMapping("/sportTests")
     public BlockDto<SportTestSummaryDto> findSportTests(

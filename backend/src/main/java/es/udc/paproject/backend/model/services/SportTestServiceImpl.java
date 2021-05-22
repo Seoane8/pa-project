@@ -53,8 +53,8 @@ public class SportTestServiceImpl implements SportTestService{
     public SportTest findSportTestById(Long id) throws InstanceNotFoundException {
         Optional<SportTest> test = sportTestDao.findById(id);
 
-        if (!test.isPresent()) {
-            throw new InstanceNotFoundException("project.entities.sportTest", id);
+        if (test.isEmpty()) {
+            throw new InstanceNotFoundException("entities.sportTest", id);
         }
 
         return test.get();
