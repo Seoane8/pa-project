@@ -41,7 +41,7 @@ CREATE TABLE SportTest (
     sportTestTypeId BIGINT NOT NULL,
     location VARCHAR(60) NOT NULL,
     provinceId BIGINT NOT NULL,
-    rating INT,
+    rating DECIMAL(3,2),
     numRatings INT,
     version INT NOT NULL,
     CONSTRAINT SportTestPK PRIMARY KEY (id),
@@ -61,7 +61,6 @@ CREATE TABLE Inscription (
     dorsal INT NOT NULL,
     dorsalCollected BOOLEAN NOT NULL,
     score INT,
-    version INT NOT NULL,
     CONSTRAINT InscriptionPK PRIMARY KEY (id),
     CONSTRAINT InscriptionUserIdFK FOREIGN KEY (userId)
         REFERENCES User (id),
