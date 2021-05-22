@@ -9,12 +9,12 @@ public class SportTestSummaryDto {
     private Long provinceId;
     private Long sportTestType;
     private long date;
-    private int rating;
+    private float rating;
 
     public SportTestSummaryDto () {}
 
     public SportTestSummaryDto(Long id, String name, Long provinceId,
-                               Long sportTestType, long date, int rating) {
+                               Long sportTestType, long date, float rating) {
         this.id = id;
         this.name = name;
         this.provinceId = provinceId;
@@ -63,9 +63,9 @@ public class SportTestSummaryDto {
         this.date = date;
     }
 
-    public int getRating() { return rating; }
+    public float getRating() { return rating; }
 
-    public void setRating(int rating) { this.rating = rating; }
+    public void setRating(float rating) { this.rating = rating; }
 
 
 }

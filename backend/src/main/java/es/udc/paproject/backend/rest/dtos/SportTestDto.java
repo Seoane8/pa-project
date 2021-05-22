@@ -8,7 +8,7 @@ public class SportTestDto {
     private long date;
     private Long type;
     private Long province;
-    private int rating;
+    private float rating;
     private String location;
     private float price;
     private int maxParticipants;
@@ -21,7 +21,7 @@ public class SportTestDto {
     public SportTestDto() {
     }
 
-    public SportTestDto(Long id, String name, long date, Long type, Long province, int rating, String location,
+    public SportTestDto(Long id, String name, long date, Long type, Long province, float rating, String location,
                         float price, int maxParticipants, int numParticipants, String description,
                         boolean resgistrationEnabled, boolean dorsalDeliveryEnabled ) {
         this.id = id;
@@ -79,11 +79,11 @@ public class SportTestDto {
         this.province = province;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

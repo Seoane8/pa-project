@@ -16,7 +16,7 @@ public class SportTest {
     private SportTestType type;
     private String location;
     private Province province;
-    private int rating;
+    private float rating;
     private int numRatings;
     private int version;
 
@@ -34,6 +34,8 @@ public class SportTest {
         this.type = type;
         this.location = location;
         this.province = province;
+        this.rating = 0;
+        this.numRatings = 0;
     }
 
     @Id
@@ -122,11 +124,11 @@ public class SportTest {
         this.province = province;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
@@ -153,7 +155,7 @@ public class SportTest {
     }
 
     public boolean registrationEnabled(){
-        return date.minusHours(24).isAfter(LocalDateTime.now());
+        return (date.minusHours(24).isAfter(LocalDateTime.now()) && numParticipants < maxParticipants);
     }
 
     public boolean dorsalDeliveryEnabled(){
