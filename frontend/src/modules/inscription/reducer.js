@@ -4,8 +4,7 @@ import * as actionTypes from './actionTypes'
 
 const initialState = {
   lastInscribeInfo: null,
-  inscriptionsSearch: null,
-  inscription: null
+  inscriptionsSearch: null
 }
 
 const lastInscribeInfo = (state = initialState.lastInscribeInfo, action) => {
@@ -32,7 +31,9 @@ const inscriptionsSearch = (state = initialState.inscriptionsSearch, action) => 
           ? { ...ins, score: action.data.score, ratingEnabled: false }
           : ins
       )
+      
       if (!inscriptions) return state
+
       const newResult = { ...state.result, items: inscriptions }
       return { ...state, result: newResult }
     }
@@ -42,22 +43,8 @@ const inscriptionsSearch = (state = initialState.inscriptionsSearch, action) => 
   }
 }
 
-const inscription = (state = initialState.inscription, action) => {
-  switch (action.type) {
-    case actionTypes.FIND_INSCRIPTION_COMPLETED:
-      return action.inscription
-
-    case actionTypes.CLEAR_INSCRIPTION:
-      return initialState.inscription
-
-    default:
-      return state
-  }
-}
-
 const reducer = combineReducers({
   inscriptionsSearch,
-  inscription,
   lastInscribeInfo
 })
 

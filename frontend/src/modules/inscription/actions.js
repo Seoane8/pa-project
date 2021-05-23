@@ -37,21 +37,6 @@ export const previousFindInscriptionsResultPage = criteria =>
 export const nextFindInscriptionsResultPage = criteria =>
   findInscriptions({ page: criteria.page + 1 })
 
-export const clearInscription = () => ({
-  type: actionTypes.CLEAR_INSCRIPTION
-})
-
-const findInscriptionCompleted = inscription => ({
-  type: actionTypes.FIND_INSCRIPTION_COMPLETED,
-  inscription
-})
-
-export const findInscription = inscriptionId => dispatch => {
-  backend.inscriptionService.findInscription(inscriptionId, inscription => {
-    dispatch(findInscriptionCompleted(inscription))
-  })
-}
-
 export const updateStore = (id, score) => ({
   type: actionTypes.UPDATE_SCORE,
   data: { id, score }

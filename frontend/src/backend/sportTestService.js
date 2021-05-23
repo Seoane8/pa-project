@@ -2,11 +2,8 @@ import { config, appFetch } from './appFetch'
 
 const baseUrl = '/sportTestsSearch'
 
-export const findSportTests = ({
-  startDate, finishDate, provinceId,
-  typeId, page
-},
-onSuccess) => {
+export const findSportTests = (params, onSuccess) => {
+  const { startDate, finishDate, provinceId, typeId, page } = params
   let path = `${baseUrl}/sportTests?page=${page}`
 
   path += startDate ? `&startDate=${startDate}` : ''

@@ -47,8 +47,10 @@ const sportTest = (state = initialState.sportTest, action) => {
   switch (action.type) {
     case actionTypes.FIND_SPORTTEST_BY_ID_COMPLETED:
       return action.sportTest
+
     case actionTypes.CLEAR_SPORTTEST:
       return initialState.sportTest
+      
     default:
       return state
   }
