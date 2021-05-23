@@ -8,7 +8,7 @@ import * as selectors from '../selectors'
 const SportTests = ({ sporttests, provinces, sportTestTypes }) => (
 
   <div className='table-responsive'>
-    <table className='table table-striped table-hover'>
+    <table className='table table-striped table-hover text-center'>
 
       <thead>
         <tr>

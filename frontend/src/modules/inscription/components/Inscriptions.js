@@ -12,7 +12,7 @@ const Inscriptions = ({ inscriptions }) => {
 
   return (
     <div className='table-responsive'>
-      <table className='table table-striped table-hover'>
+      <table className='table table-striped table-hover text-center'>
         <thead>
           <tr>
             <th scope='col'>
