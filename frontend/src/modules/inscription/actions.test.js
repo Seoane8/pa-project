@@ -3,7 +3,6 @@ import thunk from "redux-thunk"
 
 import backend from '../../backend'
 import * as actions from './actions'
-import * as actionTypes from './actionTypes'
 
 const mockStore = configureMockStore([thunk])
 
@@ -39,18 +38,15 @@ describe('Inscribe action', () => {
   })
 
   test('when the request is successful, dispatch action to store', () => {
-    const inscribeResult = {
+    const inscriptionResult = {
       id: 1,
       dorsal: 1
     }
-    const inscribeCompletedAction = {
-      type: actionTypes.INSCRIBE_COMPLETED,
-      result: inscribeResult
-    }
+    const inscribeCompletedAction = actions.inscribeCompleted(inscriptionResult)
 
     jest.spyOn(backend.inscriptionService, 'inscribe')
       .mockImplementation((_inscribeParams, onSuccess, _onErrors) => 
-        onSuccess(inscribeResult)
+        onSuccess(inscriptionResult)
       )
     
     const expectedActions = [inscribeCompletedAction]

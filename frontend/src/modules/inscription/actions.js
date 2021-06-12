@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes'
 import backend from '../../backend'
 
-const inscribeCompleted = result => ({
+export const inscribeCompleted = result => ({
   type: actionTypes.INSCRIBE_COMPLETED,
   result
 })
