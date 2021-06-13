@@ -56,7 +56,7 @@ const FindSportTests = () => {
           />
         </div>
         <div className='form-group mx-2 row col'>
-          <label htmlFor='finishDate' className='col-form-label p-0'>
+          <label htmlFor='provinceId' className='col-form-label p-0'>
             <FormattedMessage id='project.global.fields.province' />
           </label>
           <ProvinceSelector
@@ -67,7 +67,7 @@ const FindSportTests = () => {
           />
         </div>
         <div className='form-group mx-2 row col'>
-          <label htmlFor='finishDate' className='col-form-label p-0'>
+          <label htmlFor='sportTestTypeId' className='col-form-label p-0'>
             <FormattedMessage id='project.global.fields.sportTestType' />
           </label>
           <SportTestTypeSelector

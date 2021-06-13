@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes'
 import * as selectors from './selectors'
 import backend from '../../backend'
 
-const findSportTestsCompleted = sportTestSearch => ({
+export const findSportTestsCompleted = sportTestSearch => ({
   type: actionTypes.FIND_SPORTTESTS_COMPLETED,
   sportTestSearch
 })
@@ -19,7 +19,7 @@ export const previousFindSportTestsResultPage = criteria =>
 export const nextFindSportTestsResultPage = criteria =>
   findSportTests({ ...criteria, page: criteria.page + 1 })
 
-const clearSportTestSearch = () => ({
+export const clearSportTestSearch = () => ({
   type: actionTypes.CLEAR_SPORTTEST_SEARCH
 })
 
