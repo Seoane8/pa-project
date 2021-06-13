@@ -80,6 +80,10 @@ describe('Rendering FindSportTests component', () => {
     })
 
     describe('Trying to find sport tests', () => {
+        const date = "2021-06-10"
+        const provinceId = 1
+        const sportTestTypeId = 1
+
         let fromInput
         let toInput
         let provinceInput
@@ -109,9 +113,6 @@ describe('Rendering FindSportTests component', () => {
         })
 
         test('when insert dates, province and sportTestType', () => {
-            const date = "2021-06-10"
-            const provinceId = 1
-            const sportTestTypeId = 1
             const findSportTestsSpy = jest.spyOn(actions, 'findSportTests').mockImplementation(
                 (_criteria) => null
             )
@@ -124,6 +125,21 @@ describe('Rendering FindSportTests component', () => {
 
             expect(findSportTestsSpy.mock.calls[0][0])
                 .toEqual({finishDate: date, page: 0, provinceId: provinceId, startDate: date, typeId: sportTestTypeId})
+        })
+
+        test('when searching, path doesn´t change', () => {
+            jest.spyOn(actions, 'findSportTests').mockImplementation(
+                (_criteria) => null
+            )
+
+            fireEvent.change(fromInput, {target: {value: date}})
+            fireEvent.change(toInput, {target: {value: date}})
+            fireEvent.change(provinceInput, {target: {value: provinceId}})
+            fireEvent.change(sportTestTypeInput,  {target: {value: sportTestTypeId}})
+            fireEvent.click(searchButton)
+
+            expect(history).toHaveLength(1)
+            expect(history.location.pathname).toEqual('/')
         })
     })
 })

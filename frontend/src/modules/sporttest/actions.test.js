@@ -23,7 +23,7 @@ describe('SportTest action', () => {
     test('calls backend service correctly', () => {
         const backendInscribeSpy = jest
             .spyOn(backend.sportTestService, 'findSportTests')
-            .mockImplementation((_criteria, _onSuccess) => null)
+            .mockImplementation((_criteria) => null)
 
         dispatchFindSportTestsAction()
 

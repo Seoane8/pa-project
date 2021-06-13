@@ -32,9 +32,15 @@ describe('SportTest reducer', () => {
             existMoreItems: false
         }
     }
+    const completedState = {
+        provinces: [{id: 1, name: 'A Coruña'}],
+        sportTestTypes: [{id: 1, name: 'Running'}],
+        sportTestSearch: null,
+        sportTest: null
+    }
     const clearState = {
-        provinces: null,
-        sportTestTypes: null,
+        provinces: [{id: 1, name: 'A Coruña'}],
+        sportTestTypes: [{id: 1, name: 'Running'}],
         sportTestSearch: sportTestSearch,
         sportTest: null
     }
@@ -50,16 +56,16 @@ describe('SportTest reducer', () => {
 
     test('FIND_SPORTTESTS_COMPLETED', () => {
 
-        const state = initialState
+        const state = completedState
         const action = actions.findSportTestsCompleted(sportTestSearch)
 
         deepFreeze(state)
         const newState = reducer(state, action)
 
-        expect(newState.provinces).toEqual(initialState.provinces)
-        expect(newState.sportTestTypes).toEqual(initialState.sportTestTypes)
+        expect(newState.provinces).toEqual(completedState.provinces)
+        expect(newState.sportTestTypes).toEqual(completedState.sportTestTypes)
         expect(newState.sportTestSearch).toEqual(sportTestSearch)
-        expect(newState.sportTest).toEqual(initialState.sportTest)
+        expect(newState.sportTest).toEqual(completedState.sportTest)
     })
 
     test('CLEAR_SPORTTEST_SEARCH', () => {
@@ -70,8 +76,8 @@ describe('SportTest reducer', () => {
         deepFreeze(state)
         const newState = reducer(state, action)
 
-        expect(newState.provinces).toEqual(initialState.provinces)
-        expect(newState.sportTestTypes).toEqual(initialState.sportTestTypes)
+        expect(newState.provinces).toEqual(clearState.provinces)
+        expect(newState.sportTestTypes).toEqual(clearState.sportTestTypes)
         expect(newState.sportTestSearch).toEqual(initialState.sportTestSearch)
         expect(newState.sportTest).toEqual(initialState.sportTest)
     })
