@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStore } from 'redux'
 import { createMemoryHistory } from 'history'
-import { fireEvent, prettyDOM, render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { IntlProvider } from 'react-intl'
 import { Router } from 'react-router-dom'
@@ -9,7 +9,6 @@ import { Router } from 'react-router-dom'
 import InscriptionForm from './InscriptionForm'
 import messages_en from '../../../i18n/messages/messages_en'
 import * as actions from '../actions'
-import userEvent from '@testing-library/user-event'
 
 const  generateRandomCardNumber = (len) => 
   Math.random().toString(10).substring(2,len+3)
